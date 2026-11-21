@@ -23,7 +23,7 @@ export default function KbPage() {
           { name: "База знаний", url: "/kb" },
         ])}
       />
-      <h1 className="text-3xl font-extrabold tracking-tight sm:text-4xl">База знаний</h1>
+      <h1 className="heading-caps text-3xl sm:text-5xl">База знаний</h1>
       <p className="mt-4 text-sm leading-relaxed text-muted">
         Практические материалы по подбору и применению источников бесперебойного
         питания — пишут инженеры, которые ежедневно подбирают ИБП под задачи.
@@ -34,7 +34,7 @@ export default function KbPage() {
           <Link
             key={a.slug}
             href={`/kb/${a.slug}`}
-            className="group block rounded-2xl border border-line bg-white p-6 transition hover:border-accent-400/60"
+            className="group block border border-line bg-white p-6 transition hover:border-accent-400/60"
           >
             <h2 className="text-lg font-bold transition group-hover:text-accent-600">{a.title}</h2>
             <p className="mt-2 text-sm leading-relaxed text-muted">{a.lead}</p>

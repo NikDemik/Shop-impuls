@@ -21,10 +21,10 @@ export default async function AdminOrderDetail({ params }: { params: Params }) {
       </Link>
 
       <div className="mt-3 flex flex-wrap items-center gap-4">
-        <h1 className="font-mono text-2xl font-extrabold tracking-tight">{order.number}</h1>
+        <h1 className="font-mono text-2xl heading-caps">{order.number}</h1>
         <StatusBadge status={order.status} />
         <span className="text-sm text-muted">{formatDateTime(order.createdAt)}</span>
-        <span className={`rounded-full px-2.5 py-0.5 text-xs font-semibold ${
+        <span className={`px-2.5 py-0.5 text-xs font-semibold ${
           order.type === "B2B" ? "bg-violet-50 text-violet-700" : "bg-sky-50 text-sky-700"
         }`}>
           {order.type}
@@ -32,7 +32,7 @@ export default async function AdminOrderDetail({ params }: { params: Params }) {
       </div>
 
       <div className="mt-6 grid gap-6 lg:grid-cols-[1fr_340px] lg:items-start">
-        <div className="overflow-hidden rounded-2xl border border-line bg-white">
+        <div className="overflow-hidden border border-line bg-white">
           <div className="border-b border-line px-5 py-4 text-sm font-bold">Состав заказа</div>
           {order.items.map((it) => (
             <div key={it.id} className="flex flex-wrap items-center gap-3 border-b border-line px-5 py-4 last:border-0">
@@ -63,7 +63,7 @@ export default async function AdminOrderDetail({ params }: { params: Params }) {
         </div>
 
         <div className="space-y-6">
-          <form action={updateOrderStatusAction} className="rounded-2xl border border-line bg-white p-5">
+          <form action={updateOrderStatusAction} className="border border-line bg-white p-5">
             <input type="hidden" name="id" value={order.id} />
             <label className="block text-xs font-bold uppercase tracking-wider text-muted">
               Статус заказа
@@ -73,7 +73,7 @@ export default async function AdminOrderDetail({ params }: { params: Params }) {
                 key={order.status}
                 name="status"
                 defaultValue={order.status}
-                className="flex-1 rounded-xl border border-line bg-paper px-3.5 py-2.5 text-sm outline-none focus:border-accent-400"
+                className="flex-1 border border-line bg-paper px-3.5 py-2.5 text-sm outline-none focus:border-accent-400"
               >
                 {Object.entries(ORDER_STATUS_LABELS).map(([k, v]) => (
                   <option key={k} value={k}>{v}</option>
@@ -81,14 +81,14 @@ export default async function AdminOrderDetail({ params }: { params: Params }) {
               </select>
               <button
                 type="submit"
-                className="rounded-xl bg-accent-400 px-4 py-2.5 text-sm font-bold text-brand-950 transition hover:bg-accent-300"
+                className="bg-accent-400 px-4 py-2.5 text-sm font-bold text-brand-950 transition hover:bg-accent-300"
               >
                 ОК
               </button>
             </div>
           </form>
 
-          <div className="rounded-2xl border border-line bg-white p-5 text-sm">
+          <div className="border border-line bg-white p-5 text-sm">
             <div className="text-xs font-bold uppercase tracking-wider text-muted">Клиент</div>
             <div className="mt-3 space-y-1.5">
               <div className="font-medium">{order.customerName}</div>

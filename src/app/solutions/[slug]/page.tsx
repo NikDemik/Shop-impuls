@@ -97,7 +97,7 @@ export default async function SolutionPage({ params }: { params: Params }) {
           <span className="text-ink">{solution.title}</span>
         </div>
 
-        <h1 className="mt-3 text-3xl font-extrabold tracking-tight sm:text-4xl">
+        <h1 className="mt-3 heading-caps text-3xl sm:text-5xl">
           ИБП ИМПУЛЬС — {solution.title.toLowerCase()}
         </h1>
         <p className="mt-5 text-base leading-relaxed text-muted">{solution.lead}</p>
@@ -105,7 +105,7 @@ export default async function SolutionPage({ params }: { params: Params }) {
         <div id="overview" className="mt-6 space-y-4 text-sm leading-relaxed text-muted">
           {solution.body.map((p, i) => (
             <div key={i}>
-              <h2 className="text-lg font-extrabold tracking-tight text-ink">{p.h2}</h2>
+              <h2 className="text-lg heading-caps text-ink">{p.h2}</h2>
               {p.paragraphs.map((t, j) => (
                 <p key={j} className="mt-3">{t}</p>
               ))}
@@ -115,7 +115,7 @@ export default async function SolutionPage({ params }: { params: Params }) {
 
         <section id="models" className="mt-10 scroll-mt-24">
           <div className="flex flex-wrap items-center justify-between gap-3">
-            <h2 className="text-xl font-extrabold tracking-tight">Подходящие модели</h2>
+            <h2 className="text-xl heading-caps">Подходящие модели</h2>
             <Link
               href="/catalog"
               className="text-sm font-semibold text-accent-600 transition hover:text-accent-500"
@@ -144,17 +144,17 @@ export default async function SolutionPage({ params }: { params: Params }) {
               ))}
             </div>
           ) : (
-            <div className="mt-5 rounded-2xl border border-dashed border-line bg-white p-8 text-center text-sm text-muted">
+            <div className="mt-5 border border-dashed border-line bg-white p-8 text-center text-sm text-muted">
               Подходящие модели обновляются — свяжитесь с нами для подбора.
             </div>
           )}
         </section>
 
         <section id="faq" className="mt-10 scroll-mt-24">
-          <h2 className="text-xl font-extrabold tracking-tight">Частые вопросы</h2>
+          <h2 className="text-xl heading-caps">Частые вопросы</h2>
           <div className="mt-5 space-y-4">
             {solution.faq.map((f, i) => (
-              <div key={f.q} id={`faq-${i}`} className="scroll-mt-24 rounded-2xl border border-line bg-white p-5">
+              <div key={f.q} id={`faq-${i}`} className="scroll-mt-24 border border-line bg-white p-5">
                 <h3 className="text-sm font-bold">{f.q}</h3>
                 <p className="mt-2 text-sm leading-relaxed text-muted">{f.a}</p>
               </div>
@@ -162,17 +162,17 @@ export default async function SolutionPage({ params }: { params: Params }) {
           </div>
         </section>
 
-        <div className="mt-10 rounded-2xl bg-brand-950 p-6 text-paper sm:p-8">
+        <div className="mt-10 bg-brand-950 p-6 text-paper sm:p-8">
           <h2 className="text-lg font-extrabold">Нужен подбор под конкретную задачу?</h2>
           <p className="mt-2 text-sm text-paper/70">
             Опишите нагрузку (мощность, время автономии, чувствительность) — инженер
             подберёт модель и подготовит коммерческое предложение в течение рабочего дня.
           </p>
           <div className="mt-4 flex flex-wrap gap-3 text-sm">
-            <a href="tel:+78005051010" className="rounded-xl bg-accent-400 px-5 py-2.5 font-bold text-brand-950 transition hover:bg-accent-300">
+            <a href="tel:+78005051010" className="bg-accent-400 px-5 py-2.5 font-bold text-brand-950 transition hover:bg-accent-300">
               8 800 505-10-10
             </a>
-            <Link href="/catalog" className="rounded-xl border border-white/20 px-5 py-2.5 font-semibold transition hover:border-accent-400 hover:text-accent-400">
+            <Link href="/catalog" className="border border-white/20 px-5 py-2.5 font-semibold transition hover:border-accent-400 hover:text-accent-400">
               Перейти в каталог
             </Link>
           </div>

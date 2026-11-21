@@ -14,8 +14,8 @@ export default async function Footer() {
       <div className="mx-auto grid max-w-site gap-10 px-4 py-14 sm:px-6 md:grid-cols-2 lg:grid-cols-4 lg:px-8">
         <div>
           <div className="flex items-center gap-2.5">
-            <Logo />
-            <span className="text-lg font-extrabold tracking-tight">
+            <Logo className="h-10 w-10" />
+            <span className="font-display text-xl font-semibold uppercase leading-none tracking-[0.08em]">
               ИМПУЛЬС<span className="text-accent-400">Маркет</span>
             </span>
           </div>

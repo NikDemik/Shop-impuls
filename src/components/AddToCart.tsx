@@ -27,7 +27,7 @@ export default function AddToCart({ code, name, article, priceKopecks, compact }
       <button
         type="button"
         onClick={handle}
-        className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-lg transition ${
+        className={`flex h-9 w-9 shrink-0 items-center justify-center transition ${
           added
             ? "bg-accent-500 text-white"
             : "bg-brand-950 text-accent-400 hover:bg-brand-800"
@@ -43,7 +43,7 @@ export default function AddToCart({ code, name, article, priceKopecks, compact }
     <button
       type="button"
       onClick={handle}
-      className={`flex w-full items-center justify-center gap-2 rounded-xl px-6 py-3.5 text-sm font-bold transition sm:w-auto ${
+      className={`flex w-full items-center justify-center gap-2 px-6 py-3.5 text-sm font-bold transition sm:w-auto ${
         added
           ? "bg-accent-600 text-white"
           : "bg-accent-400 text-brand-950 hover:bg-accent-300"

@@ -18,8 +18,8 @@ export default async function AccountOrders() {
   if (orders.length === 0) {
     return (
       <div>
-        <h1 className="text-2xl font-extrabold tracking-tight">Мои заказы</h1>
-        <div className="mt-6 rounded-2xl border border-dashed border-line bg-white px-6 py-14 text-center text-sm text-muted">
+        <h1 className="text-2xl heading-caps">Мои заказы</h1>
+        <div className="mt-6 border border-dashed border-line bg-white px-6 py-14 text-center text-sm text-muted">
           Заказов пока нет.{" "}
           <Link href="/catalog" className="font-semibold text-accent-600 hover:underline">
             Перейти в каталог
@@ -31,8 +31,8 @@ export default async function AccountOrders() {
 
   return (
     <div>
-      <h1 className="text-2xl font-extrabold tracking-tight">Мои заказы</h1>
-      <div className="mt-6 overflow-hidden rounded-2xl border border-line bg-white">
+      <h1 className="text-2xl heading-caps">Мои заказы</h1>
+      <div className="mt-6 overflow-hidden border border-line bg-white">
         {orders.map((o) => (
           <Link
             key={o.id}

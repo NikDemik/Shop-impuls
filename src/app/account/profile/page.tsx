@@ -14,7 +14,7 @@ export default async function ProfilePage() {
 
   return (
     <div>
-      <h1 className="text-2xl font-extrabold tracking-tight">Профиль</h1>
+      <h1 className="text-2xl heading-caps">Профиль</h1>
       <p className="mt-1.5 text-sm text-muted">E-mail: {user.email}</p>
       <div className="mt-6">
         <ProfileForm

@@ -48,14 +48,14 @@ export default function CartView({
 
   if (items.length === 0) {
     return (
-      <div className="flex flex-col items-center justify-center rounded-3xl border border-dashed border-line bg-white px-6 py-20 text-center">
+      <div className="flex flex-col items-center justify-center border border-dashed border-line bg-white px-6 py-20 text-center">
         <div className="text-lg font-bold">Корзина пуста</div>
         <p className="mt-2 max-w-sm text-sm text-muted">
           Выберите источник бесперебойного питания в каталоге — добавим его сюда.
         </p>
         <Link
           href="/catalog"
-          className="mt-6 flex items-center gap-2 rounded-xl bg-accent-400 px-6 py-3 text-sm font-bold text-brand-950 transition hover:bg-accent-300"
+          className="mt-6 flex items-center gap-2 bg-accent-400 px-6 py-3 text-sm font-bold text-brand-950 transition hover:bg-accent-300"
         >
           Перейти в каталог <IconArrowRight />
         </Link>
@@ -65,10 +65,10 @@ export default function CartView({
 
   return (
     <div className="grid gap-6 lg:grid-cols-[1fr_340px] lg:items-start">
-      <div className="rounded-2xl border border-line bg-white">
+      <div className="border border-line bg-white">
         {items.map((i) => (
           <div key={i.code} className="flex flex-wrap items-center gap-4 border-b border-line p-5 last:border-0">
-            <Link href={`/product/${i.code}`} className="shrink-0 rounded-xl bg-paper p-2">
+            <Link href={`/product/${i.code}`} className="shrink-0 bg-paper p-2">
               <ProductImage path={images[i.code] ?? null} alt={i.name} className="h-16 w-20" />
             </Link>
             <div className="min-w-40 flex-1">
@@ -78,7 +78,7 @@ export default function CartView({
               <div className="mt-1 text-xs text-muted">арт. {i.article}</div>
               <div className="mt-1 text-xs text-muted">{formatPrice(i.priceKopecks)} / шт</div>
             </div>
-            <div className="flex items-center rounded-lg border border-line">
+            <div className="flex items-center border border-line">
               <button
                 type="button"
                 onClick={() => setQty(i.code, i.qty - 1)}
@@ -112,7 +112,7 @@ export default function CartView({
         ))}
       </div>
 
-      <div className="rounded-2xl border border-line bg-white p-6">
+      <div className="border border-line bg-white p-6">
         <h2 className="text-lg font-bold">Итого</h2>
         <dl className="mt-4 space-y-3 text-sm">
           <div className="flex justify-between">
@@ -135,7 +135,7 @@ export default function CartView({
         {loggedIn ? (
           <Link
             href="/checkout"
-            className="mt-5 flex w-full items-center justify-center gap-2 rounded-xl bg-accent-400 py-3.5 text-sm font-bold text-brand-950 transition hover:bg-accent-300"
+            className="mt-5 flex w-full items-center justify-center gap-2 bg-accent-400 py-3.5 text-sm font-bold text-brand-950 transition hover:bg-accent-300"
           >
             Оформить заказ <IconArrowRight />
           </Link>
@@ -143,13 +143,13 @@ export default function CartView({
           <div className="mt-5 space-y-2.5">
             <Link
               href="/login?next=/checkout"
-              className="flex w-full items-center justify-center rounded-xl bg-accent-400 py-3.5 text-sm font-bold text-brand-950 transition hover:bg-accent-300"
+              className="flex w-full items-center justify-center bg-accent-400 py-3.5 text-sm font-bold text-brand-950 transition hover:bg-accent-300"
             >
               Войти и оформить заказ
             </Link>
             <Link
               href="/register?next=/checkout"
-              className="flex w-full items-center justify-center rounded-xl border border-line py-3 text-sm font-semibold text-ink transition hover:border-accent-400"
+              className="flex w-full items-center justify-center border border-line py-3 text-sm font-semibold text-ink transition hover:border-accent-400"
             >
               Зарегистрироваться
             </Link>

@@ -31,14 +31,14 @@ export default async function AdminOrders({ searchParams }: { searchParams: Sear
   return (
     <div>
       <div className="flex flex-wrap items-center justify-between gap-3">
-        <h1 className="text-2xl font-extrabold tracking-tight">Заказы</h1>
+        <h1 className="text-2xl heading-caps">Заказы</h1>
         <span className="text-sm text-muted">{total} всего</span>
       </div>
 
       <div className="mt-4 flex flex-wrap gap-2">
         <Link
           href="/admin/orders"
-          className={`rounded-full px-4 py-1.5 text-xs font-semibold transition ${
+          className={`px-4 py-1.5 text-xs font-semibold transition ${
             !status ? "bg-brand-950 text-accent-400" : "border border-line bg-white text-muted hover:border-accent-400"
           }`}
         >
@@ -48,7 +48,7 @@ export default async function AdminOrders({ searchParams }: { searchParams: Sear
           <Link
             key={k}
             href={`/admin/orders?status=${k}`}
-            className={`rounded-full px-4 py-1.5 text-xs font-semibold transition ${
+            className={`px-4 py-1.5 text-xs font-semibold transition ${
               status === k ? "bg-brand-950 text-accent-400" : "border border-line bg-white text-muted hover:border-accent-400"
             }`}
           >
@@ -57,7 +57,7 @@ export default async function AdminOrders({ searchParams }: { searchParams: Sear
         ))}
       </div>
 
-      <div className="mt-5 overflow-x-auto rounded-2xl border border-line bg-white">
+      <div className="mt-5 overflow-x-auto border border-line bg-white">
         <table className="w-full min-w-160 text-sm">
           <thead>
             <tr className="border-b border-line text-left text-xs uppercase tracking-wider text-muted">
@@ -84,7 +84,7 @@ export default async function AdminOrders({ searchParams }: { searchParams: Sear
                   {o.companyName && <div className="text-xs text-muted">{o.companyName}</div>}
                 </td>
                 <td className="px-5 py-3.5">
-                  <span className={`rounded-full px-2.5 py-0.5 text-xs font-semibold ${
+                  <span className={`px-2.5 py-0.5 text-xs font-semibold ${
                     o.type === "B2B" ? "bg-violet-50 text-violet-700" : "bg-sky-50 text-sky-700"
                   }`}>
                     {o.type}
@@ -110,7 +110,7 @@ export default async function AdminOrders({ searchParams }: { searchParams: Sear
             <Link
               key={i}
               href={`/admin/orders?page=${i + 1}${status ? `&status=${status}` : ""}`}
-              className={`flex h-9 w-9 items-center justify-center rounded-lg text-sm font-semibold transition ${
+              className={`flex h-9 w-9 items-center justify-center text-sm font-semibold transition ${
                 page === i + 1 ? "bg-brand-950 text-accent-400" : "border border-line bg-white hover:border-accent-400"
               }`}
             >

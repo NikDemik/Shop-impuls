@@ -5,7 +5,7 @@ import { useActionState, useState } from "react";
 import { registerAction, type FormState } from "@/actions/auth";
 
 const inputCls =
-  "w-full rounded-xl border border-line bg-white px-4 py-3 text-sm outline-none transition focus:border-accent-400";
+  "w-full border border-line bg-white px-4 py-3 text-sm outline-none transition focus:border-accent-400";
 
 export default function RegisterForm({ next, defaultB2B }: { next: string; defaultB2B: boolean }) {
   const [state, action, pending] = useActionState<FormState, FormData>(registerAction, {});
@@ -26,7 +26,7 @@ export default function RegisterForm({ next, defaultB2B }: { next: string; defau
             key={o.v}
             type="button"
             onClick={() => setType(o.v)}
-            className={`rounded-xl border p-3.5 text-sm font-bold transition ${
+            className={`border p-3.5 text-sm font-bold transition ${
               type === o.v ? "border-accent-400 bg-accent-400/5" : "border-line hover:border-accent-400/50"
             }`}
           >
@@ -77,7 +77,7 @@ export default function RegisterForm({ next, defaultB2B }: { next: string; defau
       </div>
 
       {state.error && (
-        <div className="rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-xs text-red-600">
+        <div className="border border-red-200 bg-red-50 px-4 py-3 text-xs text-red-600">
           {state.error}
         </div>
       )}
@@ -85,7 +85,7 @@ export default function RegisterForm({ next, defaultB2B }: { next: string; defau
       <button
         type="submit"
         disabled={pending}
-        className="w-full rounded-xl bg-accent-400 py-3.5 text-sm font-bold text-brand-950 transition hover:bg-accent-300 disabled:opacity-60"
+        className="w-full bg-accent-400 py-3.5 text-sm font-bold text-brand-950 transition hover:bg-accent-300 disabled:opacity-60"
       >
         {pending ? "Создаём аккаунт…" : "Зарегистрироваться"}
       </button>

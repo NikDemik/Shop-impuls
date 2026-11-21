@@ -15,7 +15,7 @@ export type ProductFormData = {
 };
 
 const inputCls =
-  "w-full rounded-xl border border-line bg-white px-4 py-2.5 text-sm outline-none transition focus:border-accent-400";
+  "w-full border border-line bg-white px-4 py-2.5 text-sm outline-none transition focus:border-accent-400";
 
 /**
  * Форма цены товара: каталог наполняется синхронизацией с API, поэтому
@@ -28,7 +28,7 @@ export default function ProductForm({ initial }: { initial: ProductFormData }) {
     <form action={action} className="max-w-3xl space-y-6">
       <input type="hidden" name="id" value={initial.id} />
 
-      <div className="rounded-2xl border border-line bg-white p-6">
+      <div className="border border-line bg-white p-6">
         <div className="grid gap-4 sm:grid-cols-2">
           <div>
             <div className="text-xs font-semibold text-muted">Название</div>
@@ -58,7 +58,7 @@ export default function ProductForm({ initial }: { initial: ProductFormData }) {
           <span className="text-xs font-semibold text-muted">
             Цена на сайте, ₽ без НДС
             {initial.isOverridden && (
-              <span className="ml-2 rounded-full bg-violet-50 px-2 py-0.5 text-[10px] font-bold text-violet-700">
+              <span className="ml-2 bg-violet-50 px-2 py-0.5 text-[10px] font-bold text-violet-700">
                 задана вручную
               </span>
             )}
@@ -77,10 +77,10 @@ export default function ProductForm({ initial }: { initial: ProductFormData }) {
       </div>
 
       {state.error && (
-        <div className="rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-xs text-red-600">{state.error}</div>
+        <div className="border border-red-200 bg-red-50 px-4 py-3 text-xs text-red-600">{state.error}</div>
       )}
       {state.ok && !state.error && (
-        <div className="rounded-xl border border-emerald-200 bg-emerald-50 px-4 py-3 text-xs text-emerald-700">
+        <div className="border border-emerald-200 bg-emerald-50 px-4 py-3 text-xs text-emerald-700">
           Цена сохранена.
         </div>
       )}
@@ -89,11 +89,11 @@ export default function ProductForm({ initial }: { initial: ProductFormData }) {
         <button
           type="submit"
           disabled={pending}
-          className="rounded-xl bg-accent-400 px-8 py-3 text-sm font-bold text-brand-950 transition hover:bg-accent-300 disabled:opacity-60"
+          className="bg-accent-400 px-8 py-3 text-sm font-bold text-brand-950 transition hover:bg-accent-300 disabled:opacity-60"
         >
           {pending ? "Сохраняем…" : "Сохранить"}
         </button>
-        <Link href="/admin/products" className="rounded-xl border border-line px-6 py-3 text-sm font-semibold text-muted transition hover:border-accent-400">
+        <Link href="/admin/products" className="border border-line px-6 py-3 text-sm font-semibold text-muted transition hover:border-accent-400">
           Отмена
         </Link>
       </div>

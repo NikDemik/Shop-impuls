@@ -18,7 +18,7 @@ export default async function CheckoutPage() {
 
   return (
     <div className="mx-auto max-w-site px-4 py-10 sm:px-6 lg:px-8">
-      <h1 className="text-3xl font-extrabold tracking-tight sm:text-4xl">Оформление заказа</h1>
+      <h1 className="heading-caps text-3xl sm:text-5xl">Оформление заказа</h1>
       <div className="mt-8">
         <CheckoutForm
           user={{

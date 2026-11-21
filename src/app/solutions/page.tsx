@@ -46,7 +46,7 @@ export default async function SolutionsPage() {
           { name: "Решения", url: "/solutions" },
         ])}
       />
-      <h1 className="text-3xl font-extrabold tracking-tight sm:text-4xl">
+      <h1 className="heading-caps text-3xl sm:text-5xl">
         Решения по отраслям
       </h1>
       <p className="mt-4 max-w-2xl text-sm leading-relaxed text-muted">
@@ -62,15 +62,15 @@ export default async function SolutionsPage() {
             <Link
               key={sol.slug}
               href={`/solutions/${sol.slug}`}
-              className="group flex flex-col rounded-2xl border border-line bg-white p-6 transition hover:border-accent-400/60 hover:shadow-[0_8px_30px_rgba(181,47,34,0.08)]"
+              className="group flex flex-col border border-line bg-white p-6 transition hover:border-accent-400/60 hover:shadow-[0_8px_30px_rgba(181,47,34,0.08)]"
             >
-              <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-brand-950 text-accent-400">
+              <div className="flex h-10 w-10 items-center justify-center bg-brand-950 text-accent-400">
                 <Icon className="h-5 w-5" />
               </div>
               <h2 className="mt-4 text-lg font-bold transition group-hover:text-accent-600">{sol.title}</h2>
               <p className="mt-2 line-clamp-3 text-sm leading-relaxed text-muted">{sol.lead}</p>
               <div className="mt-4 flex flex-wrap items-center gap-2">
-                <span className="rounded-full bg-paper px-2.5 py-1 text-[11px] font-semibold text-accent-600">
+                <span className="bg-paper px-2.5 py-1 text-[11px] font-semibold text-accent-600">
                   {count} моделей
                 </span>
               </div>

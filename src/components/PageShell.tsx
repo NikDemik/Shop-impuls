@@ -20,7 +20,7 @@ export default function PageShell({
       leftNav={<SideNav title="Информация" items={INFO_PAGES} />}
       toc={sections.map(({ id, title: sectionTitle }) => ({ id, title: sectionTitle }))}
     >
-      <h1 className="text-3xl font-extrabold tracking-tight sm:text-4xl">{title}</h1>
+      <h1 className="heading-caps text-3xl sm:text-5xl">{title}</h1>
       {lead && <p className="mt-4 text-base leading-relaxed text-muted">{lead}</p>}
       <div className="mt-8 space-y-6">
         {sections.map((section) => (
@@ -43,8 +43,8 @@ export function PageSection({
   children: ReactNode;
 }) {
   return (
-    <div id={id} className="scroll-mt-24 rounded-2xl border border-line bg-white p-6 sm:p-8">
-      <h2 className="text-lg font-bold">{title}</h2>
+    <div id={id} className="scroll-mt-24 border border-line bg-white p-6 sm:p-8">
+      <h2 className="heading-caps text-lg">{title}</h2>
       <div className="mt-4 space-y-3 text-sm leading-relaxed text-muted">{children}</div>
     </div>
   );
@@ -55,7 +55,7 @@ export function PageList({ items }: { items: string[] }) {
     <ul className="space-y-2">
       {items.map((li) => (
         <li key={li} className="flex items-start gap-2.5">
-          <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-accent-400" />
+          <span className="mt-1.5 h-1.5 w-1.5 shrink-0 bg-accent-400" />
           {li}
         </li>
       ))}

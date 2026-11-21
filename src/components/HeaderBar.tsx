@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import type { SessionPayload } from "@/lib/auth";
 import { Logo, IconUser } from "@/components/icons";
 import CartLinkClient from "@/components/CartLinkClient";
+import CatalogMenu, { type CatalogCategory } from "@/components/CatalogMenu";
 import { logoutAction } from "@/actions/auth";
 
 /**
@@ -12,7 +13,13 @@ import { logoutAction } from "@/actions/auth";
  * уезжает), а при скролле становится полупрозрачной.
  * Контент (сессия) приходит пропсами из серверного Header.
  */
-export default function HeaderBar({ session }: { session: SessionPayload | null }) {
+export default function HeaderBar({
+  session,
+  catalog,
+}: {
+  session: SessionPayload | null;
+  catalog: CatalogCategory[];
+}) {
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
@@ -30,14 +37,14 @@ export default function HeaderBar({ session }: { session: SessionPayload | null 
     >
       <div className="mx-auto flex h-16 max-w-site items-center gap-6 px-4 sm:px-6 lg:px-8">
         <Link href="/" className="flex items-center gap-2.5">
-          <Logo />
-          <span className="text-lg font-extrabold tracking-tight">
+          <Logo className="h-10 w-10" />
+          <span className="font-display text-xl font-semibold uppercase leading-none tracking-[0.08em]">
             ИМПУЛЬС<span className="text-accent-400">Маркет</span>
           </span>
         </Link>
 
-        <nav className="hidden items-center gap-6 text-sm text-paper/70 lg:flex">
-          <Link href="/catalog" className="transition hover:text-accent-400">Каталог</Link>
+        <nav className="hidden items-center gap-6 text-[13px] font-semibold uppercase tracking-[0.14em] text-paper/65 lg:flex">
+          <CatalogMenu categories={catalog} />
           <Link href="/#series" className="transition hover:text-accent-400">Серии</Link>
           <Link href="/solutions" className="transition hover:text-accent-400">Решения</Link>
           <Link href="/documentation" className="transition hover:text-accent-400">Документация</Link>
@@ -48,7 +55,7 @@ export default function HeaderBar({ session }: { session: SessionPayload | null 
           {session?.role === "ADMIN" && (
             <Link
               href="/admin"
-              className="hidden rounded-lg border border-accent-400/40 px-3 py-1.5 text-xs font-semibold text-accent-400 transition hover:bg-accent-400/10 sm:block"
+              className="hidden border border-accent-400/40 px-3 py-1.5 text-xs font-semibold text-accent-400 transition hover:bg-accent-400/10 sm:block"
             >
               Панель управления
             </Link>
@@ -60,7 +67,7 @@ export default function HeaderBar({ session }: { session: SessionPayload | null 
             <div className="flex items-center gap-2">
               <Link
                 href="/account"
-                className="flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium text-paper/85 transition hover:text-accent-400"
+                className="flex items-center gap-2 px-3 py-2 text-sm font-medium text-paper/85 transition hover:text-accent-400"
               >
                 <IconUser className="h-5 w-5" />
                 <span className="hidden max-w-32 truncate sm:block">{session.name}</span>
@@ -68,7 +75,7 @@ export default function HeaderBar({ session }: { session: SessionPayload | null 
               <form action={logoutAction}>
                 <button
                   type="submit"
-                  className="hidden rounded-lg border border-white/15 px-3 py-1.5 text-xs text-paper/60 transition hover:border-white/30 hover:text-paper md:block"
+                  className="hidden border border-white/15 px-3 py-1.5 text-xs text-paper/60 transition hover:border-white/30 hover:text-paper md:block"
                 >
                   Выйти
                 </button>
@@ -77,7 +84,7 @@ export default function HeaderBar({ session }: { session: SessionPayload | null 
           ) : (
             <Link
               href="/login"
-              className="flex items-center gap-2 rounded-lg bg-accent-400 px-3.5 py-2 text-sm font-semibold text-brand-950 transition hover:bg-accent-300"
+              className="flex items-center gap-2 bg-accent-400 px-3.5 py-2 text-sm font-semibold text-brand-950 transition hover:bg-accent-300"
             >
               <IconUser className="h-4.5 w-4.5" />
               <span className="hidden sm:block">Войти</span>

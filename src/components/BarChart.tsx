@@ -11,7 +11,7 @@ export default function BarChart({ data, title, suffix = " ₽" }: Props) {
   const H = 46;
 
   return (
-    <div className="rounded-2xl border border-line bg-white p-6">
+    <div className="border border-line bg-white p-6">
       <div className="flex items-center justify-between">
         <h3 className="text-sm font-bold">{title}</h3>
         <span className="text-xs text-muted">за 14 дней</span>
@@ -28,7 +28,7 @@ export default function BarChart({ data, title, suffix = " ₽" }: Props) {
                 }`}
                 style={{ height: `${Math.max(hPct, hasValue ? 3 : 1.5)}%` }}
               />
-              <div className="pointer-events-none absolute bottom-full left-1/2 z-10 mb-1.5 hidden -translate-x-1/2 whitespace-nowrap rounded-lg bg-brand-950 px-2.5 py-1.5 text-[11px] font-semibold text-accent-300 group-hover:block">
+              <div className="pointer-events-none absolute bottom-full left-1/2 z-10 mb-1.5 hidden -translate-x-1/2 whitespace-nowrap bg-brand-950 px-2.5 py-1.5 text-[11px] font-semibold text-accent-300 group-hover:block">
                 {d.label}: {d.value.toLocaleString("ru-RU")}{suffix}
               </div>
             </div>

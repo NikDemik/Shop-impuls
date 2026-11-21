@@ -53,7 +53,7 @@ export default function Filters({ seriesList }: { seriesList: SeriesOpt[] }) {
   const visibleSeries = showAllSeries ? seriesList : seriesList.slice(0, 10);
 
   return (
-    <aside className="rounded-2xl border border-line bg-white p-6">
+    <aside className="border border-line bg-white p-6">
       <div className="flex items-center justify-between">
         <span className="label-caps text-ink">Фильтры</span>
         <button type="button" onClick={reset} className="text-xs text-muted transition hover:text-accent-600">
@@ -112,7 +112,7 @@ export default function Filters({ seriesList }: { seriesList: SeriesOpt[] }) {
           <select
             value={minPower}
             onChange={(e) => setMinPower(e.target.value)}
-            className="w-full rounded-lg border border-line bg-paper px-2.5 py-2 text-sm outline-none focus:border-accent-400"
+            className="w-full border border-line bg-paper px-2.5 py-2 text-sm outline-none focus:border-accent-400"
           >
             <option value="">от</option>
             {POWER_STEPS.map((v) => (
@@ -123,7 +123,7 @@ export default function Filters({ seriesList }: { seriesList: SeriesOpt[] }) {
           <select
             value={maxPower}
             onChange={(e) => setMaxPower(e.target.value)}
-            className="w-full rounded-lg border border-line bg-paper px-2.5 py-2 text-sm outline-none focus:border-accent-400"
+            className="w-full border border-line bg-paper px-2.5 py-2 text-sm outline-none focus:border-accent-400"
           >
             <option value="">до</option>
             {POWER_STEPS.map((v) => (
@@ -148,7 +148,7 @@ export default function Filters({ seriesList }: { seriesList: SeriesOpt[] }) {
       <button
         type="button"
         onClick={apply}
-        className="mt-6 w-full rounded-xl bg-brand-950 py-3 text-sm font-bold text-accent-400 transition hover:bg-brand-800"
+        className="mt-6 w-full bg-brand-950 py-3 text-sm font-bold text-accent-400 transition hover:bg-brand-800"
       >
         Применить
       </button>

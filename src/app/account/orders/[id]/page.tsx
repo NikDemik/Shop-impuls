@@ -34,8 +34,8 @@ export default async function AccountOrderDetail({
   return (
     <div>
       {isNew && (
-        <div className="mb-6 flex items-start gap-3 rounded-2xl border border-accent-400/40 bg-accent-400/10 p-5">
-          <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-accent-400 text-brand-950">
+        <div className="mb-6 flex items-start gap-3 border border-accent-400/40 bg-accent-400/10 p-5">
+          <span className="flex h-8 w-8 shrink-0 items-center justify-center bg-accent-400 text-brand-950">
             <IconCheck />
           </span>
           <div>
@@ -51,20 +51,20 @@ export default async function AccountOrderDetail({
       )}
 
       <div className="flex flex-wrap items-center gap-4">
-        <h1 className="font-mono text-2xl font-extrabold tracking-tight">{order.number}</h1>
+        <h1 className="font-mono text-2xl heading-caps">{order.number}</h1>
         <StatusBadge status={order.status} />
         <span className="text-sm text-muted">от {formatDateTime(order.createdAt)}</span>
       </div>
 
       {/* Статусная шкала */}
       {order.status !== "CANCELLED" && (
-        <div className="mt-6 rounded-2xl border border-line bg-white p-6">
+        <div className="mt-6 border border-line bg-white p-6">
           <div className="flex items-center">
             {TIMELINE.map((s, i) => (
               <div key={s} className="flex flex-1 items-center last:flex-none">
                 <div className="flex flex-col items-center">
                   <span
-                    className={`flex h-8 w-8 items-center justify-center rounded-full border text-xs font-bold ${
+                    className={`flex h-8 w-8 items-center justify-center border text-xs font-bold ${
                       i <= currentIdx
                         ? "border-accent-400 bg-accent-400 text-brand-950"
                         : "border-line bg-white text-muted"
@@ -86,7 +86,7 @@ export default async function AccountOrderDetail({
       )}
 
       <div className="mt-6 grid gap-6 lg:grid-cols-[1fr_340px] lg:items-start">
-        <div className="overflow-hidden rounded-2xl border border-line bg-white">
+        <div className="overflow-hidden border border-line bg-white">
           <div className="border-b border-line px-5 py-4 text-sm font-bold">
             Состав заказа
           </div>
@@ -119,7 +119,7 @@ export default async function AccountOrderDetail({
         </div>
 
         <div className="space-y-6">
-          <div className="rounded-2xl border border-line bg-white p-5 text-sm">
+          <div className="border border-line bg-white p-5 text-sm">
             <div className="text-xs font-bold uppercase tracking-wider text-muted">Получатель</div>
             <div className="mt-3 space-y-1.5">
               <div className="font-medium">{order.customerName}</div>
@@ -139,7 +139,7 @@ export default async function AccountOrderDetail({
             )}
           </div>
 
-          <div className="rounded-2xl border border-line bg-white p-5 text-sm">
+          <div className="border border-line bg-white p-5 text-sm">
             <div className="text-xs font-bold uppercase tracking-wider text-muted">Доставка и оплата</div>
             <div className="mt-3 space-y-1.5">
               <div className="font-medium">{DELIVERY_LABELS[order.delivery] ?? order.delivery}</div>

@@ -23,18 +23,18 @@ export default function UpsImage({ className = "", tone = "dark" }: Props) {
       {/* дисплей */}
       <rect x="48" y="60" width="104" height="52" rx="8" fill={panel} />
       <rect x="56" y="70" width="88" height="20" rx="4" fill="#0a0e14" />
-      <text x="100" y="85" textAnchor="middle" fontFamily="monospace" fontSize="14" fontWeight="700" fill="#f04e3e">
+      <text x="100" y="85" textAnchor="middle" fontFamily="monospace" fontSize="14" fontWeight="700" fill="#f28232">
         220V
       </text>
       <circle cx="64" cy="102" r="3" fill="#4ade80" />
       <rect x="74" y="99" width="52" height="6" rx="3" fill={text} opacity="0.5" />
       {/* кнопка */}
       <circle cx="100" cy="134" r="10" fill={panel} stroke={bodyEdge} strokeWidth="2" />
-      <path d="M100 129v10" stroke="#f04e3e" strokeWidth="2.4" strokeLinecap="round" />
+      <path d="M100 129v10" stroke="#f28232" strokeWidth="2.4" strokeLinecap="round" />
       {/* логотип-импульс */}
       <path
         d="M44 176h14l6-20 9 34 8-24 4 8h27"
-        stroke="#f04e3e"
+        stroke="#f28232"
         strokeWidth="3"
         strokeLinecap="round"
         strokeLinejoin="round"

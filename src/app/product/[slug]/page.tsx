@@ -6,6 +6,7 @@ import { prisma } from "@/lib/prisma";
 import ProductGallery from "@/components/ProductGallery";
 import ProductCard from "@/components/ProductCard";
 import AddToCart from "@/components/AddToCart";
+import CompareButton from "@/components/CompareButton";
 import JsonLd from "@/components/JsonLd";
 import { formatKva, formatPrice, formatPriceShort, effectivePriceKopecks } from "@/lib/format";
 import { FILE_CAT_LABELS } from "@/lib/format";
@@ -96,6 +97,16 @@ export default async function ProductPage({ params }: { params: Params }) {
   const hasPrice = effectivePriceKopecks(product) !== null;
   const saleMode = product.priceOverrideKopecks === null && product.saleKopecks !== null;
   const effPrice = effectivePriceKopecks(product);
+
+  const compareItem = {
+    slug: product.slug,
+    name: product.name,
+    article: product.article ?? "",
+    powerKva: product.powerKva,
+    type: product.type,
+    priceKopecks: effPrice,
+    seriesName: product.series?.name ?? null,
+  };
 
   const fileGroups = new Map<string, GoodFile[]>();
   for (const f of files) {
@@ -211,18 +222,18 @@ export default async function ProductPage({ params }: { params: Params }) {
               </Link>
             )}
             {saleMode && (
-              <span className="rounded-full bg-accent-400 px-2.5 py-0.5 text-xs font-bold text-brand-950">
+              <span className="bg-accent-400 px-2.5 py-0.5 text-xs font-bold text-brand-950">
                 Акция
               </span>
             )}
             {appFlags.includes("Сделано в России") && (
-              <span className="rounded-full bg-emerald-50 px-2.5 py-0.5 text-xs font-semibold text-emerald-700">
+              <span className="bg-emerald-50 px-2.5 py-0.5 text-xs font-semibold text-emerald-700">
                 Сделано в России
               </span>
             )}
           </div>
 
-          <h1 className="mt-3 text-3xl font-extrabold leading-tight tracking-tight">{product.name}</h1>
+          <h1 className="mt-3 heading-caps text-3xl sm:text-5xl">{product.name}</h1>
           <div className="mt-2 flex flex-wrap gap-x-4 gap-y-1 text-sm text-muted">
             {product.article && <span>Артикул: {product.article}</span>}
             {product.powerKva !== null && <span>Мощность: {formatKva(product.powerKva)}</span>}
@@ -236,7 +247,7 @@ export default async function ProductPage({ params }: { params: Params }) {
                 .map((f) => (
                   <span
                     key={f}
-                    className="rounded-full border border-line bg-white px-2.5 py-1 text-xs text-muted"
+                    className="border border-line bg-white px-2.5 py-1 text-xs text-muted"
                   >
                     {f}
                   </span>
@@ -244,14 +255,14 @@ export default async function ProductPage({ params }: { params: Params }) {
             </div>
           )}
 
-          <div className="mt-6 rounded-2xl border border-line bg-white p-6">
+          <div className="mt-6 border border-line bg-white p-6">
             {hasPrice ? (
               <div className="flex flex-wrap items-end justify-between gap-4">
                 <div>
                   <div className="text-xs text-muted">Цена</div>
                   {saleMode ? (
                     <div className="mt-1 flex items-baseline gap-3">
-                      <div className="text-4xl font-extrabold tracking-tight text-accent-600">
+                      <div className="text-4xl section-num text-accent-600">
                         {formatPrice(product.saleKopecks!)}
                       </div>
                       <div className="text-lg text-muted line-through">
@@ -259,7 +270,7 @@ export default async function ProductPage({ params }: { params: Params }) {
                       </div>
                     </div>
                   ) : (
-                    <div className="mt-1 text-4xl font-extrabold tracking-tight">
+                    <div className="mt-1 text-4xl section-num">
                       {formatPrice(effPrice!)}
                     </div>
                   )}
@@ -270,7 +281,7 @@ export default async function ProductPage({ params }: { params: Params }) {
               </div>
             ) : (
               <div>
-                <div className="text-2xl font-extrabold tracking-tight">Цена по запросу</div>
+                <div className="text-2xl section-num">Цена по запросу</div>
                 <p className="mt-2 text-sm text-muted">
                   Подготовим коммерческое предложение в течение рабочего дня: позвоните
                   нам или отправьте заявку с указанием модели и количества.
@@ -290,18 +301,19 @@ export default async function ProductPage({ params }: { params: Params }) {
                 <>
                   <Link
                     href="/contacts"
-                    className="flex items-center justify-center gap-2 rounded-xl bg-accent-400 px-6 py-3.5 text-sm font-bold text-brand-950 transition hover:bg-accent-300"
+                    className="flex items-center justify-center gap-2 bg-accent-400 px-6 py-3.5 text-sm font-bold text-brand-950 transition hover:bg-accent-300"
                   >
                     Запросить цену <IconArrowRight className="h-4 w-4" />
                   </Link>
                   <a
                     href="mailto:sales@impuls-ups.ru?subject=Запрос цены"
-                    className="flex items-center justify-center gap-2 rounded-xl border border-line px-6 py-3.5 text-sm font-semibold text-ink transition hover:border-accent-400 hover:text-accent-600"
+                    className="flex items-center justify-center gap-2 border border-line px-6 py-3.5 text-sm font-semibold text-ink transition hover:border-accent-400 hover:text-accent-600"
                   >
                     Отправить заявку
                   </a>
                 </>
               )}
+              <CompareButton item={compareItem} />
             </div>
 
             <div className="mt-5 grid gap-3 border-t border-line pt-5 text-sm sm:grid-cols-2">
@@ -321,8 +333,8 @@ export default async function ProductPage({ params }: { params: Params }) {
       {/* ─── Характеристики + описание ─── */}
       <div className="mt-10 grid gap-6 lg:grid-cols-[1fr_1.2fr]">
         {Object.keys(specs).length > 0 && (
-          <div className="rounded-2xl border border-line bg-white p-6">
-            <h2 className="text-lg font-bold">Характеристики</h2>
+          <div className="border border-line bg-white p-6">
+            <h2 className="heading-caps text-lg">Характеристики</h2>
             <table className="mt-4 w-full text-sm">
               <tbody>
                 {Object.entries(specs).map(([k, v]) => (
@@ -338,8 +350,8 @@ export default async function ProductPage({ params }: { params: Params }) {
 
         <div className="space-y-6">
           {(product.description || blocks.advantages) && (
-            <div className="rounded-2xl border border-line bg-white p-6">
-              <h2 className="text-lg font-bold">Описание</h2>
+            <div className="border border-line bg-white p-6">
+              <h2 className="heading-caps text-lg">Описание</h2>
               {product.description && (
                 <div
                   className="rich-html mt-4 text-sm"
@@ -364,8 +376,8 @@ export default async function ProductPage({ params }: { params: Params }) {
           )}
 
           {files.length > 0 && (
-            <div className="rounded-2xl border border-line bg-white p-6">
-              <h2 className="text-lg font-bold">Документация</h2>
+            <div className="border border-line bg-white p-6">
+              <h2 className="heading-caps text-lg">Документация</h2>
               <div className="mt-4 space-y-4">
                 {[...fileGroups.entries()].map(([cat, groupFiles]) => (
                   <div key={cat}>
@@ -402,7 +414,7 @@ export default async function ProductPage({ params }: { params: Params }) {
         .map((key, i) => (
           <section
             key={key}
-            className={`mt-10 rounded-2xl border border-line bg-white p-6 sm:p-8 ${i % 2 === 1 ? "bg-paper" : ""}`}
+            className={`mt-10 border border-line bg-white p-6 sm:p-8 ${i % 2 === 1 ? "bg-paper" : ""}`}
           >
             <div
               className="rich-html"
@@ -413,8 +425,8 @@ export default async function ProductPage({ params }: { params: Params }) {
 
       {/* ─── Модификации ─── */}
       {modifications && modifications.rows.length > 0 && (
-        <section className="mt-10 rounded-2xl border border-line bg-white p-6 sm:p-8">
-          <h2 className="text-lg font-bold">Модификации</h2>
+        <section className="mt-10 border border-line bg-white p-6 sm:p-8">
+          <h2 className="heading-caps text-lg">Модификации</h2>
           <p className="mt-2 text-sm text-muted">
             Модели различаются индикацией, интерфейсами связи и типом выходных разъёмов.
             Отмечены складские варианты.
@@ -440,7 +452,7 @@ export default async function ProductPage({ params }: { params: Params }) {
                       <td key={j} className="py-2.5 pr-4">
                         {cell}
                         {j === 0 && row.relevant && (
-                          <span className="ml-2 inline-flex items-center gap-1 rounded-full bg-emerald-50 px-2 py-0.5 text-[11px] font-semibold text-emerald-700">
+                          <span className="ml-2 inline-flex items-center gap-1 bg-emerald-50 px-2 py-0.5 text-[11px] font-semibold text-emerald-700">
                             <IconBolt className="h-3 w-3" /> склад
                           </span>
                         )}
@@ -455,8 +467,8 @@ export default async function ProductPage({ params }: { params: Params }) {
       )}
 
       {/* ─── FAQ ─── */}
-      <section className="mt-10 rounded-2xl border border-line bg-white p-6 sm:p-8">
-        <h2 className="text-lg font-bold">Частые вопросы</h2>
+      <section className="mt-10 border border-line bg-white p-6 sm:p-8">
+        <h2 className="heading-caps text-lg">Частые вопросы</h2>
         <div className="mt-4 space-y-4">
           {faq.map((f) => (
             <div key={f.q} className="border-b border-line pb-4 last:border-0 last:pb-0">
@@ -469,7 +481,7 @@ export default async function ProductPage({ params }: { params: Params }) {
 
       {similar.length > 0 && (
         <section className="mt-14">
-          <h2 className="text-2xl font-extrabold tracking-tight">Похожие товары</h2>
+          <h2 className="text-2xl heading-caps">Похожие товары</h2>
           <div className="mt-6 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {similar.map((p) => (
               <ProductCard

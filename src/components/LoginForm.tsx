@@ -17,7 +17,7 @@ export default function LoginForm({ next }: { next: string }) {
           type="email"
           required
           autoComplete="email"
-          className="mt-1.5 w-full rounded-xl border border-line bg-white px-4 py-3 text-sm outline-none transition focus:border-accent-400"
+          className="mt-1.5 w-full border border-line bg-white px-4 py-3 text-sm outline-none transition focus:border-accent-400"
         />
       </label>
       <label className="block">
@@ -27,12 +27,12 @@ export default function LoginForm({ next }: { next: string }) {
           type="password"
           required
           autoComplete="current-password"
-          className="mt-1.5 w-full rounded-xl border border-line bg-white px-4 py-3 text-sm outline-none transition focus:border-accent-400"
+          className="mt-1.5 w-full border border-line bg-white px-4 py-3 text-sm outline-none transition focus:border-accent-400"
         />
       </label>
 
       {state.error && (
-        <div className="rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-xs text-red-600">
+        <div className="border border-red-200 bg-red-50 px-4 py-3 text-xs text-red-600">
           {state.error}
         </div>
       )}
@@ -40,7 +40,7 @@ export default function LoginForm({ next }: { next: string }) {
       <button
         type="submit"
         disabled={pending}
-        className="w-full rounded-xl bg-accent-400 py-3.5 text-sm font-bold text-brand-950 transition hover:bg-accent-300 disabled:opacity-60"
+        className="w-full bg-accent-400 py-3.5 text-sm font-bold text-brand-950 transition hover:bg-accent-300 disabled:opacity-60"
       >
         {pending ? "Входим…" : "Войти"}
       </button>

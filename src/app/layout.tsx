@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
-import { Manrope } from "next/font/google";
+import { Manrope, Oswald } from "next/font/google";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import CompareBar from "@/components/CompareBar";
 import JsonLd from "@/components/JsonLd";
 import { organizationLd, SITE_URL, SITE_TITLE } from "@/lib/seo";
 import "./globals.css";
@@ -9,6 +10,11 @@ import "./globals.css";
 const manrope = Manrope({
   subsets: ["latin", "cyrillic"],
   variable: "--font-manrope",
+});
+
+const oswald = Oswald({
+  subsets: ["latin", "cyrillic"],
+  variable: "--font-oswald",
 });
 
 export const metadata: Metadata = {
@@ -39,11 +45,12 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="ru" className={manrope.variable}>
+    <html lang="ru" className={`${manrope.variable} ${oswald.variable}`}>
       <body className="flex min-h-screen flex-col">
         <JsonLd data={organizationLd()} />
         <Header />
         <main className="flex-1">{children}</main>
+        <CompareBar />
         <Footer />
       </body>
     </html>

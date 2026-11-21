@@ -69,7 +69,7 @@ export default async function DocumentationPage({ searchParams }: { searchParams
           { name: "Документация", url: "/documentation" },
         ])}
       />
-      <h1 className="text-3xl font-extrabold tracking-tight sm:text-4xl">Документация</h1>
+      <h1 className="heading-caps text-3xl sm:text-5xl">Документация</h1>
       <p className="mt-4 text-sm leading-relaxed text-muted">
         Технические описания и руководства по эксплуатации ИБП ИМПУЛЬС. Всего
         в библиотеке {all.length} документов; каждый привязан к модели в каталоге.
@@ -79,7 +79,7 @@ export default async function DocumentationPage({ searchParams }: { searchParams
       <div className="mt-6 flex flex-wrap gap-2">
         <Link
           href={qs({ cat: undefined, page: 1 })}
-          className={`rounded-full px-4 py-1.5 text-xs font-semibold transition ${
+          className={`px-4 py-1.5 text-xs font-semibold transition ${
             !cat ? "bg-brand-950 text-accent-400" : "border border-line bg-white text-muted hover:border-accent-400"
           }`}
         >
@@ -91,7 +91,7 @@ export default async function DocumentationPage({ searchParams }: { searchParams
             <Link
               key={c}
               href={qs({ cat: c, page: 1 })}
-              className={`rounded-full px-4 py-1.5 text-xs font-semibold transition ${
+              className={`px-4 py-1.5 text-xs font-semibold transition ${
                 cat === c ? "bg-brand-950 text-accent-400" : "border border-line bg-white text-muted hover:border-accent-400"
               }`}
             >
@@ -100,7 +100,7 @@ export default async function DocumentationPage({ searchParams }: { searchParams
           ))}
       </div>
 
-      <div className="mt-6 overflow-hidden rounded-2xl border border-line bg-white">
+      <div className="mt-6 overflow-hidden border border-line bg-white">
         {pageFiles.map((f, i) => (
           <div
             key={`${f.path}-${i}`}
@@ -144,7 +144,7 @@ export default async function DocumentationPage({ searchParams }: { searchParams
             <Link
               key={i}
               href={qs({ page: i + 1 })}
-              className={`flex h-9 w-9 items-center justify-center rounded-lg text-sm font-semibold transition ${
+              className={`flex h-9 w-9 items-center justify-center text-sm font-semibold transition ${
                 page === i + 1 ? "bg-brand-950 text-accent-400" : "border border-line bg-white hover:border-accent-400"
               }`}
             >

@@ -123,14 +123,14 @@ export default async function CatalogPage({ searchParams }: { searchParams: Sear
 
       <div className="mt-3 flex flex-wrap items-end justify-between gap-4">
         <div>
-          <h1 className="text-3xl font-extrabold tracking-tight sm:text-4xl">Каталог ИБП ИМПУЛЬС</h1>
+          <h1 className="heading-caps text-3xl sm:text-5xl">Каталог ИБП ИМПУЛЬС</h1>
           <p className="mt-2 text-sm text-muted">Найдено {total} моделей · цены в рублях</p>
         </div>
         <SortSelect current={sort} qs={qs} />
       </div>
 
       <div className="mt-8 grid gap-6 lg:grid-cols-[280px_1fr]">
-        <Suspense fallback={<div className="h-96 animate-pulse rounded-2xl bg-white" />}>
+        <Suspense fallback={<div className="h-96 animate-pulse bg-white" />}>
           <Filters
             seriesList={seriesList.map((s) => ({ slug: s.slug, name: s.name, count: s._count.products }))}
           />
@@ -138,7 +138,7 @@ export default async function CatalogPage({ searchParams }: { searchParams: Sear
 
         <div>
           {products.length === 0 ? (
-            <div className="flex h-64 items-center justify-center rounded-2xl border border-dashed border-line bg-white text-sm text-muted">
+            <div className="flex h-64 items-center justify-center border border-dashed border-line bg-white text-sm text-muted">
               По заданным фильтрам ничего не найдено — попробуйте сбросить фильтры.
             </div>
           ) : (
@@ -169,7 +169,7 @@ export default async function CatalogPage({ searchParams }: { searchParams: Sear
                 <Link
                   key={i}
                   href={qs({ page: i + 1 })}
-                  className={`flex h-10 w-10 items-center justify-center rounded-lg text-sm font-semibold transition ${
+                  className={`flex h-10 w-10 items-center justify-center text-sm font-semibold transition ${
                     page === i + 1
                       ? "bg-brand-950 text-accent-400"
                       : "border border-line bg-white text-ink hover:border-accent-400"
@@ -194,7 +194,7 @@ function SortSelect({ current, qs }: { current: string; qs: (over: Record<string
         <Link
           key={s.value}
           href={qs({ sort: s.value, page: 1 })}
-          className={`rounded-lg px-3 py-1.5 transition ${
+          className={`px-3 py-1.5 transition ${
             current === s.value
               ? "bg-brand-950 font-semibold text-accent-400"
               : "text-muted hover:text-accent-600"

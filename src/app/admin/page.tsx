@@ -72,16 +72,16 @@ export default async function AdminDashboard() {
 
   return (
     <div>
-      <h1 className="text-2xl font-extrabold tracking-tight">Дашборд</h1>
+      <h1 className="text-2xl heading-caps">Дашборд</h1>
       <p className="mt-1 text-sm text-muted">
         {new Date().toLocaleDateString("ru-RU", { day: "numeric", month: "long", year: "numeric" })}
       </p>
 
       <div className="mt-6 grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
         {cards.map((c) => (
-          <div key={c.label} className="rounded-2xl border border-line bg-white p-5">
+          <div key={c.label} className="border border-line bg-white p-5">
             <div className="text-xs text-muted">{c.label}</div>
-            <div className={`mt-1.5 text-2xl font-extrabold tracking-tight ${c.accent ? "text-accent-600" : ""}`}>
+            <div className={`mt-1.5 text-2xl section-num ${c.accent ? "text-accent-600" : ""}`}>
               {c.value}
             </div>
             <div className="mt-1 text-xs text-muted">{c.sub}</div>
@@ -92,13 +92,13 @@ export default async function AdminDashboard() {
       <div className="mt-6 grid gap-4 xl:grid-cols-[1.6fr_1fr]">
         <BarChart data={chart} title="Выручка по дням" />
 
-        <div className="rounded-2xl border border-line bg-white p-6">
+        <div className="border border-line bg-white p-6">
           <h3 className="text-sm font-bold">Топ товаров</h3>
           <div className="mt-4 space-y-3">
             {topItems.length === 0 && <p className="text-sm text-muted">Пока нет продаж.</p>}
             {topItems.map((t, i) => (
               <div key={t.code} className="flex items-center gap-3 text-sm">
-                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-lg bg-brand-950 text-[11px] font-bold text-accent-400">
+                <span className="flex h-6 w-6 shrink-0 items-center justify-center bg-brand-950 text-[11px] font-bold text-accent-400">
                   {i + 1}
                 </span>
                 <div className="min-w-0 flex-1">
@@ -113,7 +113,7 @@ export default async function AdminDashboard() {
       </div>
 
       <div className="mt-6 grid gap-4 xl:grid-cols-[1.6fr_1fr]">
-        <div className="overflow-hidden rounded-2xl border border-line bg-white">
+        <div className="overflow-hidden border border-line bg-white">
           <div className="flex items-center justify-between border-b border-line px-6 py-4">
             <h3 className="text-sm font-bold">Последние заказы</h3>
             <Link href="/admin/orders" className="flex items-center gap-1.5 text-xs font-semibold text-accent-600 hover:underline">
@@ -135,7 +135,7 @@ export default async function AdminDashboard() {
           ))}
         </div>
 
-        <div className="rounded-2xl border border-line bg-white p-6">
+        <div className="border border-line bg-white p-6">
           <h3 className="text-sm font-bold">Товары с ценой по запросу</h3>
           <p className="mt-1 text-xs text-muted">Задайте им цену вручную на странице товара</p>
           <div className="mt-4 space-y-3">
@@ -144,7 +144,7 @@ export default async function AdminDashboard() {
               <Link key={p.id} href={`/admin/products/${p.id}`} className="block text-sm transition hover:opacity-75">
                 <div className="flex items-center justify-between gap-3">
                   <span className="truncate font-medium">{p.name}</span>
-                  <span className="shrink-0 rounded-full bg-amber-50 px-2 py-0.5 text-[11px] font-bold text-amber-700">
+                  <span className="shrink-0 bg-amber-50 px-2 py-0.5 text-[11px] font-bold text-amber-700">
                     по запросу
                   </span>
                 </div>

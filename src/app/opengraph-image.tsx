@@ -26,7 +26,7 @@ export default function OpenGraphImage() {
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
-              background: "#f04e3e",
+              background: "#f28232",
               borderRadius: 20,
               color: "#0a0e14",
               fontSize: 56,
@@ -35,7 +35,7 @@ export default function OpenGraphImage() {
           >
             V
           </div>
-          <div style={{ color: "#f04e3e", fontSize: 40, fontWeight: 800, letterSpacing: 4 }}>
+          <div style={{ color: "#f28232", fontSize: 40, fontWeight: 800, letterSpacing: 4 }}>
             ИМПУЛЬС DRIVES
           </div>
         </div>

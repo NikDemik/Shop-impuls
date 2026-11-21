@@ -11,9 +11,9 @@ export default async function LoginPage({ searchParams }: { searchParams: Search
 
   return (
     <div className="mx-auto grid min-h-[70vh] max-w-md place-items-center px-4 py-12">
-      <div className="w-full rounded-3xl border border-line bg-white p-8">
+      <div className="w-full border border-line bg-white p-8">
         <div className="label-caps text-accent-600">Личный кабинет</div>
-        <h1 className="mt-2 text-2xl font-extrabold tracking-tight">Вход</h1>
+        <h1 className="mt-2 text-2xl heading-caps">Вход</h1>
         <p className="mt-1.5 text-sm text-muted">
           Для оформления заказов, истории покупок и B2B-документов.
         </p>
@@ -22,7 +22,7 @@ export default async function LoginPage({ searchParams }: { searchParams: Search
             <LoginForm next={next} />
           </Suspense>
         </div>
-        <div className="mt-6 rounded-xl bg-paper p-4 text-xs leading-relaxed text-muted">
+        <div className="mt-6 bg-paper p-4 text-xs leading-relaxed text-muted">
           <span className="font-bold text-ink">Демо-доступы:</span><br />
           Администратор: <span className="font-mono">admin@impuls-ups.ru / admin123</span><br />
           Покупатель — зарегистрируйтесь на сайте.

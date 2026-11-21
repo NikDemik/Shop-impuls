@@ -20,7 +20,7 @@ export default async function EditProductPage({ params }: { params: Params }) {
       <Link href="/admin/products" className="text-sm text-muted transition hover:text-accent-600">
         ← Все товары
       </Link>
-      <h1 className="mt-3 text-2xl font-extrabold tracking-tight">
+      <h1 className="mt-3 text-2xl heading-caps">
         Цена товара <span className="text-base text-muted">{product.name}</span>
       </h1>
       <p className="mt-1 text-sm text-muted">

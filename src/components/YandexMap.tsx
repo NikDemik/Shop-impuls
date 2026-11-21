@@ -18,7 +18,7 @@ export default function YandexMap({ className = "" }: { className?: string }) {
       href={YMAPS_LINK}
       target="_blank"
       rel="noopener noreferrer"
-      className={`group relative flex h-72 w-full flex-col items-center justify-center gap-3 overflow-hidden rounded-2xl border border-white/10 bg-brand-950 text-center sm:h-96 ${className}`}
+      className={`group relative flex h-72 w-full flex-col items-center justify-center gap-3 overflow-hidden border border-white/10 bg-brand-950 text-center sm:h-96 ${className}`}
     >
       {/* Координатная сетка на месте будущей карты */}
       <div

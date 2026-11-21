@@ -16,7 +16,7 @@ type Props = {
 };
 
 const inputCls =
-  "w-full rounded-xl border border-line bg-white px-4 py-3 text-sm outline-none transition focus:border-accent-400";
+  "w-full border border-line bg-white px-4 py-3 text-sm outline-none transition focus:border-accent-400";
 
 export default function ProfileForm({ user }: Props) {
   const [state, action, pending] = useActionState<FormState, FormData>(updateProfileAction, {});
@@ -24,7 +24,7 @@ export default function ProfileForm({ user }: Props) {
 
   return (
     <form action={action} className="space-y-6">
-      <div className="rounded-2xl border border-line bg-white p-6">
+      <div className="border border-line bg-white p-6">
         <h2 className="text-lg font-bold">Личные данные</h2>
         <div className="mt-4 grid gap-4 sm:grid-cols-2">
           <label className="block">
@@ -50,7 +50,7 @@ export default function ProfileForm({ user }: Props) {
                 key={o.v}
                 type="button"
                 onClick={() => setType(o.v)}
-                className={`rounded-xl border p-3.5 text-sm font-bold transition ${
+                className={`border p-3.5 text-sm font-bold transition ${
                   type === o.v ? "border-accent-400 bg-accent-400/5" : "border-line hover:border-accent-400/50"
                 }`}
               >
@@ -86,7 +86,7 @@ export default function ProfileForm({ user }: Props) {
         </div>
       </div>
 
-      <div className="rounded-2xl border border-line bg-white p-6">
+      <div className="border border-line bg-white p-6">
         <h2 className="text-lg font-bold">Смена пароля</h2>
         <p className="mt-1 text-xs text-muted">Оставьте поле пустым, чтобы не менять пароль.</p>
         <label className="mt-4 block max-w-sm">
@@ -96,10 +96,10 @@ export default function ProfileForm({ user }: Props) {
       </div>
 
       {state.error && (
-        <div className="rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-xs text-red-600">{state.error}</div>
+        <div className="border border-red-200 bg-red-50 px-4 py-3 text-xs text-red-600">{state.error}</div>
       )}
       {state.ok && !state.error && (
-        <div className="rounded-xl border border-emerald-200 bg-emerald-50 px-4 py-3 text-xs text-emerald-700">
+        <div className="border border-emerald-200 bg-emerald-50 px-4 py-3 text-xs text-emerald-700">
           Профиль сохранён.
         </div>
       )}
@@ -107,7 +107,7 @@ export default function ProfileForm({ user }: Props) {
       <button
         type="submit"
         disabled={pending}
-        className="rounded-xl bg-accent-400 px-8 py-3.5 text-sm font-bold text-brand-950 transition hover:bg-accent-300 disabled:opacity-60"
+        className="bg-accent-400 px-8 py-3.5 text-sm font-bold text-brand-950 transition hover:bg-accent-300 disabled:opacity-60"
       >
         {pending ? "Сохраняем…" : "Сохранить изменения"}
       </button>

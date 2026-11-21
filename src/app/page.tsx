@@ -63,8 +63,9 @@ export default async function HomePage() {
         <div className="mx-auto max-w-site px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
           <div className="grid gap-6 lg:grid-cols-2 lg:items-end">
             <div>
-              <div className="label-caps text-accent-600">Для кого</div>
-              <h2 className="mt-3 text-3xl font-extrabold tracking-tight sm:text-4xl">
+              <div className="section-num text-5xl text-accent-400">01</div>
+              <div className="label-caps mt-3 text-accent-600">Для кого</div>
+              <h2 className="heading-caps mt-3 text-3xl sm:text-5xl">
                 Решения, которые защищают вашу отрасль
               </h2>
             </div>
@@ -74,14 +75,14 @@ export default async function HomePage() {
             </p>
           </div>
 
-          <div className="mt-10 grid gap-px overflow-hidden rounded-2xl border border-line bg-line sm:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-10 grid gap-px overflow-hidden border border-line bg-line sm:grid-cols-2 lg:grid-cols-3">
             {SOLUTION_CARDS.map((s) => (
               <Link
                 key={s.num}
                 href={`/solutions/${s.slug}`}
                 className="group bg-white p-7 transition hover:bg-brand-950"
               >
-                <div className="text-xs font-bold text-accent-600 transition group-hover:text-accent-400">{s.num}</div>
+                <div className="section-num text-2xl text-accent-600 transition group-hover:text-accent-400">{s.num}</div>
                 <h3 className="mt-3 text-lg font-bold transition group-hover:text-paper">{s.title}</h3>
                 <p className="mt-2 text-sm leading-relaxed text-muted transition group-hover:text-paper/60">
                   {s.desc}
@@ -93,18 +94,25 @@ export default async function HomePage() {
       </section>
 
       {/* ─── СЕРИИ ─── */}
-      <section id="series" className="bg-brand-950 text-paper">
-        <div className="mx-auto max-w-site px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
+      <section id="series" className="diag-lines relative overflow-hidden bg-brand-950 text-paper">
+        <div
+          aria-hidden="true"
+          className="ghost-word pointer-events-none absolute -left-4 top-6 hidden select-none text-[9rem] xl:block"
+        >
+          Серии
+        </div>
+        <div className="relative mx-auto max-w-site px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
           <div className="flex flex-wrap items-end justify-between gap-6">
             <div>
-              <div className="label-caps text-accent-400">Продуктовые линейки</div>
-              <h2 className="mt-3 text-3xl font-extrabold tracking-tight sm:text-4xl">
+              <div className="section-num text-5xl text-accent-400">02</div>
+              <div className="label-caps mt-3 text-accent-400">Продуктовые линейки</div>
+              <h2 className="heading-caps mt-3 text-3xl sm:text-5xl">
                 Серии ИБП ИМПУЛЬС
               </h2>
             </div>
             <Link
               href="/catalog"
-              className="flex items-center gap-2 text-sm font-semibold text-accent-400 transition hover:text-accent-300"
+              className="flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.08em] text-accent-400 transition hover:text-accent-300"
             >
               Смотреть весь каталог <IconArrowRight />
             </Link>
@@ -115,20 +123,20 @@ export default async function HomePage() {
               <Link
                 key={s.id}
                 href={`/catalog/${s.slug}`}
-                className="group flex flex-col rounded-2xl border border-white/10 bg-brand-900/60 p-5 transition hover:border-accent-400/50 hover:bg-brand-800"
+                className="group flex flex-col border border-white/10 bg-brand-900/60 p-5 transition hover:border-accent-400/50 hover:bg-brand-800"
               >
                 <div className="flex h-24 items-center justify-center">
                   <svg viewBox="0 0 40 12" className="h-10 w-32 transition group-hover:scale-105" fill="none" aria-hidden="true">
                     <path
                       d="M1 7h5l1.5-4.5 3 9 2.5-7 1.5 3H39"
-                      stroke="#f04e3e"
+                      stroke="#f28232"
                       strokeWidth="1.6"
                       strokeLinecap="round"
                       strokeLinejoin="round"
                     />
                   </svg>
                 </div>
-                <div className="mt-4 text-sm font-bold">{s.name}</div>
+                <div className="heading-caps mt-4 text-base">{s.name}</div>
                 <div className="mt-1 line-clamp-2 text-xs text-paper/50">{s.tagline}</div>
                 <div className="mt-3 flex items-center justify-between border-t border-white/10 pt-3 text-xs">
                   <span className="font-semibold text-accent-400">
@@ -149,14 +157,14 @@ export default async function HomePage() {
                 <Link
                   key={s.id}
                   href={`/catalog/${s.slug}`}
-                  className="rounded-full border border-white/10 px-3 py-1.5 text-xs transition hover:border-accent-400/60 hover:text-accent-400"
+                  className="border border-white/10 px-3 py-1.5 text-xs transition hover:border-accent-400/60 hover:text-accent-400"
                 >
                   {s.name}
                 </Link>
               ))}
               <Link
                 href="/catalog"
-                className="rounded-full border border-accent-400/40 px-3 py-1.5 text-xs font-semibold text-accent-400 transition hover:bg-accent-400/10"
+                className="border border-accent-400/40 px-3 py-1.5 text-xs font-semibold text-accent-400 transition hover:bg-accent-400/10"
               >
                 Все {withGoods.length} серий →
               </Link>
@@ -170,14 +178,15 @@ export default async function HomePage() {
         <div className="mx-auto max-w-site px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
           <div className="flex flex-wrap items-end justify-between gap-6">
             <div>
-              <div className="label-caps text-accent-600">Выбор покупателей</div>
-              <h2 className="mt-3 text-3xl font-extrabold tracking-tight sm:text-4xl">
+              <div className="section-num text-5xl text-accent-400">03</div>
+              <div className="label-caps mt-3 text-accent-600">Выбор покупателей</div>
+              <h2 className="heading-caps mt-3 text-3xl sm:text-5xl">
                 Популярные модели
               </h2>
             </div>
             <Link
               href="/catalog"
-              className="flex items-center gap-2 text-sm font-semibold text-accent-600 transition hover:text-accent-500"
+              className="flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.08em] text-accent-600 transition hover:text-accent-500"
             >
               Все товары <IconArrowRight />
             </Link>
@@ -210,11 +219,11 @@ export default async function HomePage() {
         <div className="mx-auto grid max-w-site gap-8 px-4 py-12 sm:grid-cols-2 sm:px-6 lg:grid-cols-4 lg:px-8">
           {STATS.map((s) => (
             <div key={s.label} className="flex items-center gap-4">
-              <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-brand-950 text-accent-400">
+              <div className="flex h-12 w-12 items-center justify-center bg-brand-950 text-accent-400">
                 <s.icon className="h-6 w-6" />
               </div>
               <div>
-                <div className="text-2xl font-extrabold tracking-tight">{s.value}</div>
+                <div className="section-num text-3xl">{s.value}</div>
                 <div className="text-xs leading-snug text-muted">{s.label}</div>
               </div>
             </div>
@@ -225,11 +234,12 @@ export default async function HomePage() {
       {/* ─── B2B + CTA ─── */}
       <section className="bg-paper">
         <div className="mx-auto max-w-site px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
-          <div className="overflow-hidden rounded-3xl bg-brand-950 text-paper">
-            <div className="hero-grid grid gap-10 p-8 sm:p-12 lg:grid-cols-2 lg:items-center lg:p-16">
+          <div className="overflow-hidden bg-brand-950 text-paper">
+            <div className="hero-grid diag-lines grid gap-10 p-8 sm:p-12 lg:grid-cols-2 lg:items-center lg:p-16">
               <div>
-                <div className="label-caps text-accent-400">Оптовым покупателям</div>
-                <h2 className="mt-3 text-3xl font-extrabold tracking-tight sm:text-4xl">
+                <div className="section-num text-5xl text-accent-400">04</div>
+                <div className="label-caps mt-3 text-accent-400">Оптовым покупателям</div>
+                <h2 className="heading-caps mt-3 text-3xl sm:text-5xl">
                   Работаем по договору, отгружаем со склада
                 </h2>
                 <p className="mt-4 max-w-lg text-sm leading-relaxed text-paper/65">
@@ -245,7 +255,7 @@ export default async function HomePage() {
                     "Проектные решения для ЦОД и промышленных объектов",
                   ].map((li) => (
                     <li key={li} className="flex items-start gap-2.5">
-                      <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-accent-400" />
+                      <span className="mt-1.5 h-1.5 w-1.5 shrink-0 bg-accent-400" />
                       {li}
                     </li>
                   ))}
@@ -253,25 +263,25 @@ export default async function HomePage() {
                 <div className="mt-8 flex flex-wrap gap-3">
                   <Link
                     href="/register?type=b2b"
-                    className="flex items-center gap-2 rounded-xl bg-accent-400 px-6 py-3.5 text-sm font-bold text-brand-950 transition hover:bg-accent-300"
+                    className="flex items-center gap-2 bg-accent-400 px-7 py-3.5 text-sm font-bold uppercase tracking-[0.08em] text-brand-950 transition hover:bg-accent-300"
                   >
                     Регистрация B2B <IconArrowRight />
                   </Link>
                   <Link
                     href="/contacts"
-                    className="flex items-center gap-2 rounded-xl border border-white/20 px-6 py-3.5 text-sm font-semibold text-paper/85 transition hover:border-accent-400 hover:text-accent-400"
+                    className="flex items-center gap-2 border border-white/20 px-7 py-3.5 text-sm font-semibold uppercase tracking-[0.08em] text-paper/85 transition hover:border-accent-400 hover:text-accent-400"
                   >
                     Запросить КП
                   </Link>
                 </div>
               </div>
 
-              <div id="contacts" className="rounded-2xl border border-white/10 bg-brand-900/70 p-6 sm:p-8">
+              <div id="contacts" className="border border-white/10 bg-brand-900/70 p-6 sm:p-8">
                 <div className="label-caps text-accent-400">Свяжитесь с нами</div>
                 <div className="mt-5 space-y-5">
                   <div>
                     <div className="text-xs text-paper/45">Отдел продаж</div>
-                    <a href="tel:+78005051010" className="mt-1 block text-2xl font-extrabold tracking-tight transition hover:text-accent-400">
+                    <a href="tel:+78005051010" className="section-num mt-1 block text-3xl transition hover:text-accent-400">
                       8 800 505-10-10
                     </a>
                     <div className="text-xs text-paper/45">звонок по России бесплатный, пн–пт 9:00–18:00</div>

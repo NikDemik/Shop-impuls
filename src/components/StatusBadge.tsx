@@ -12,7 +12,7 @@ const STYLES: Record<string, string> = {
 export default function StatusBadge({ status }: { status: string }) {
   return (
     <span
-      className={`inline-block rounded-full border px-2.5 py-0.5 text-xs font-semibold ${
+      className={`inline-block border px-2.5 py-0.5 text-xs font-semibold ${
         STYLES[status] ?? "bg-gray-100 text-gray-600 border-gray-200"
       }`}
     >

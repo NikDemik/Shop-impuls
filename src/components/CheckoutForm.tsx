@@ -74,11 +74,11 @@ export default function CheckoutForm({ user }: Props) {
   };
 
   const inputCls =
-    "w-full rounded-xl border border-line bg-white px-4 py-3 text-sm outline-none transition focus:border-accent-400";
+    "w-full border border-line bg-white px-4 py-3 text-sm outline-none transition focus:border-accent-400";
 
   if (items.length === 0) {
     return (
-      <div className="rounded-2xl border border-dashed border-line bg-white px-6 py-16 text-center text-sm text-muted">
+      <div className="border border-dashed border-line bg-white px-6 py-16 text-center text-sm text-muted">
         Корзина пуста.{" "}
         <a href="/catalog" className="font-semibold text-accent-600 hover:underline">
           Перейти в каталог
@@ -91,7 +91,7 @@ export default function CheckoutForm({ user }: Props) {
     <form onSubmit={submit} className="grid gap-6 lg:grid-cols-[1fr_360px] lg:items-start">
       <div className="space-y-6">
         {/* Тип покупателя */}
-        <section className="rounded-2xl border border-line bg-white p-6">
+        <section className="border border-line bg-white p-6">
           <h2 className="text-lg font-bold">1. Покупатель</h2>
           <div className="mt-4 grid grid-cols-2 gap-3">
             {(
@@ -107,7 +107,7 @@ export default function CheckoutForm({ user }: Props) {
                   setType(o.v);
                   setPayment(o.v === "B2B" ? "invoice" : "card");
                 }}
-                className={`rounded-xl border p-4 text-left transition ${
+                className={`border p-4 text-left transition ${
                   type === o.v
                     ? "border-accent-400 bg-accent-400/5"
                     : "border-line hover:border-accent-400/50"
@@ -149,7 +149,7 @@ export default function CheckoutForm({ user }: Props) {
         </section>
 
         {/* Доставка */}
-        <section className="rounded-2xl border border-line bg-white p-6">
+        <section className="border border-line bg-white p-6">
           <h2 className="text-lg font-bold">2. Доставка</h2>
           <div className="mt-4 space-y-3">
             {(
@@ -160,7 +160,7 @@ export default function CheckoutForm({ user }: Props) {
             ).map((o) => (
               <label
                 key={o.v}
-                className={`flex cursor-pointer items-start gap-3 rounded-xl border p-4 transition ${
+                className={`flex cursor-pointer items-start gap-3 border p-4 transition ${
                   delivery === o.v ? "border-accent-400 bg-accent-400/5" : "border-line hover:border-accent-400/50"
                 }`}
               >
@@ -194,7 +194,7 @@ export default function CheckoutForm({ user }: Props) {
         </section>
 
         {/* Оплата */}
-        <section className="rounded-2xl border border-line bg-white p-6">
+        <section className="border border-line bg-white p-6">
           <h2 className="text-lg font-bold">3. Оплата</h2>
           <div className="mt-4 space-y-3">
             {(type === "B2B"
@@ -209,7 +209,7 @@ export default function CheckoutForm({ user }: Props) {
             ).map((o) => (
               <label
                 key={o.v}
-                className={`flex cursor-pointer items-start gap-3 rounded-xl border p-4 transition ${
+                className={`flex cursor-pointer items-start gap-3 border p-4 transition ${
                   payment === o.v ? "border-accent-400 bg-accent-400/5" : "border-line hover:border-accent-400/50"
                 }`}
               >
@@ -242,7 +242,7 @@ export default function CheckoutForm({ user }: Props) {
       </div>
 
       {/* Итог */}
-      <div className="rounded-2xl border border-line bg-white p-6 lg:sticky lg:top-20">
+      <div className="border border-line bg-white p-6 lg:sticky lg:top-20">
         <h2 className="text-lg font-bold">Ваш заказ</h2>
         <div className="mt-4 max-h-64 space-y-3 overflow-y-auto pr-1">
           {items.map((i) => (
@@ -273,7 +273,7 @@ export default function CheckoutForm({ user }: Props) {
         </dl>
 
         {error && (
-          <div className="mt-4 rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-xs leading-relaxed text-red-600">
+          <div className="mt-4 border border-red-200 bg-red-50 px-4 py-3 text-xs leading-relaxed text-red-600">
             {error}
           </div>
         )}
@@ -281,7 +281,7 @@ export default function CheckoutForm({ user }: Props) {
         <button
           type="submit"
           disabled={pending}
-          className="mt-5 w-full rounded-xl bg-accent-400 py-3.5 text-sm font-bold text-brand-950 transition hover:bg-accent-300 disabled:cursor-not-allowed disabled:opacity-60"
+          className="mt-5 w-full bg-accent-400 py-3.5 text-sm font-bold text-brand-950 transition hover:bg-accent-300 disabled:cursor-not-allowed disabled:opacity-60"
         >
           {pending ? "Создаём заказ…" : "Подтвердить заказ"}
         </button>

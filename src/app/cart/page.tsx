@@ -12,7 +12,7 @@ export default async function CartPage() {
 
   return (
     <div className="mx-auto max-w-site px-4 py-10 sm:px-6 lg:px-8">
-      <h1 className="text-3xl font-extrabold tracking-tight sm:text-4xl">Корзина</h1>
+      <h1 className="heading-caps text-3xl sm:text-5xl">Корзина</h1>
       <div className="mt-8">
         <CartView isB2B={session?.accountType === "B2B"} loggedIn={session !== null} />
       </div>

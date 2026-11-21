@@ -29,7 +29,7 @@ export default async function AccountOverview() {
 
   return (
     <div>
-      <h1 className="text-2xl font-extrabold tracking-tight sm:text-3xl">
+      <h1 className="text-2xl heading-caps sm:text-3xl">
         Здравствуйте, {session.name.split(" ")[0]}!
       </h1>
       <p className="mt-1.5 text-sm text-muted">
@@ -47,9 +47,9 @@ export default async function AccountOverview() {
             value: formatPrice(totalAgg._sum.totalKopecks ?? 0),
           },
         ].map((c) => (
-          <div key={c.label} className="rounded-2xl border border-line bg-white p-5">
+          <div key={c.label} className="border border-line bg-white p-5">
             <div className="text-xs text-muted">{c.label}</div>
-            <div className="mt-1.5 text-xl font-extrabold tracking-tight">{c.value}</div>
+            <div className="mt-1.5 text-xl section-num">{c.value}</div>
           </div>
         ))}
       </div>
@@ -62,14 +62,14 @@ export default async function AccountOverview() {
       </div>
 
       {orders.length === 0 ? (
-        <div className="mt-4 rounded-2xl border border-dashed border-line bg-white px-6 py-12 text-center text-sm text-muted">
+        <div className="mt-4 border border-dashed border-line bg-white px-6 py-12 text-center text-sm text-muted">
           Заказов пока нет.{" "}
           <Link href="/catalog" className="font-semibold text-accent-600 hover:underline">
             Перейти в каталог
           </Link>
         </div>
       ) : (
-        <div className="mt-4 overflow-hidden rounded-2xl border border-line bg-white">
+        <div className="mt-4 overflow-hidden border border-line bg-white">
           {orders.map((o) => (
             <Link
               key={o.id}

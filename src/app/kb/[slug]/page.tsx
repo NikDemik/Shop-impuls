@@ -56,13 +56,13 @@ export default async function KbArticlePage({ params }: { params: Params }) {
         <span className="text-ink">{article.title}</span>
       </div>
 
-      <h1 className="mt-3 text-3xl font-extrabold tracking-tight sm:text-4xl">{article.title}</h1>
+      <h1 className="mt-3 heading-caps text-3xl sm:text-5xl">{article.title}</h1>
       <p className="mt-5 text-base leading-relaxed text-muted">{article.lead}</p>
 
       <article className="mt-8 space-y-8">
         {article.sections.map((s, i) => (
           <section key={s.h2} id={`s${i + 1}`} className="scroll-mt-24">
-            <h2 className="text-xl font-extrabold tracking-tight">{s.h2}</h2>
+            <h2 className="text-xl heading-caps">{s.h2}</h2>
             <div className="mt-3 space-y-3 text-sm leading-relaxed text-muted">
               {s.paragraphs.map((p, j) => (
                 <p key={j}>{p}</p>
@@ -72,17 +72,17 @@ export default async function KbArticlePage({ params }: { params: Params }) {
         ))}
       </article>
 
-      <div className="mt-10 rounded-2xl bg-brand-950 p-6 text-paper sm:p-8">
+      <div className="mt-10 bg-brand-950 p-6 text-paper sm:p-8">
         <h2 className="text-lg font-extrabold">Подберём ИБП под вашу задачу</h2>
         <p className="mt-2 text-sm text-paper/70">
           Опишите нагрузку и требуемое время автономии — инженер предложит модель
           и подготовит коммерческое предложение в течение рабочего дня.
         </p>
         <div className="mt-4 flex flex-wrap gap-3 text-sm">
-          <a href="tel:+78005051010" className="rounded-xl bg-accent-400 px-5 py-2.5 font-bold text-brand-950 transition hover:bg-accent-300">
+          <a href="tel:+78005051010" className="bg-accent-400 px-5 py-2.5 font-bold text-brand-950 transition hover:bg-accent-300">
             8 800 505-10-10
           </a>
-          <Link href="/catalog" className="rounded-xl border border-white/20 px-5 py-2.5 font-semibold transition hover:border-accent-400 hover:text-accent-400">
+          <Link href="/catalog" className="border border-white/20 px-5 py-2.5 font-semibold transition hover:border-accent-400 hover:text-accent-400">
             Каталог ИБП
           </Link>
         </div>

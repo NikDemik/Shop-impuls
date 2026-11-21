@@ -24,11 +24,11 @@ export default function ProductImage({
   if (!src || failed) {
     return (
       <div className={`flex items-center justify-center ${className}`}>
-        <div className="flex h-full min-h-24 w-full flex-col items-center justify-center gap-2 rounded-xl bg-gradient-to-br from-brand-900 to-brand-700 text-paper/50">
+        <div className="flex h-full min-h-24 w-full flex-col items-center justify-center gap-2 bg-gradient-to-br from-brand-900 to-brand-700 text-paper/50">
           <svg viewBox="0 0 40 12" className="h-6 w-24" fill="none">
             <path
               d="M1 7h5l1.5-4.5 3 9 2.5-7 1.5 3H39"
-              stroke="#f04e3e"
+              stroke="#f28232"
               strokeWidth="1.6"
               strokeLinecap="round"
               strokeLinejoin="round"

@@ -2,6 +2,8 @@
 
 @theme {
   --font-sans: var(--font-manrope), ui-sans-serif, system-ui, sans-serif;
+  /* Дисплейный конденсированный шрифт (стиль SQUADRO): заголовки, номера, ghost-слова */
+  --font-display: var(--font-oswald), var(--font-manrope), ui-sans-serif, sans-serif;
 
   /* Единый контейнер сайта (1440px) — утилита max-w-site */
   --container-site: 90rem;
@@ -13,13 +15,13 @@
   --color-brand-700: #1f2937;
   --color-brand-600: #2c3849;
 
-  /* accent — «импульсный» красный (CTA, акценты, бейджи) */
-  --color-accent-100: #ffe3de;
-  --color-accent-200: #ffc7bd;
-  --color-accent-300: #ff8a75;
-  --color-accent-400: #f04e3e;
-  --color-accent-500: #d63a2b;
-  --color-accent-600: #b52f22;
+  /* accent — «импульсный» оранжевый (CTA, акценты, бейджи) */
+  --color-accent-100: #fff0e2;
+  --color-accent-200: #ffd9b3;
+  --color-accent-300: #ffb26e;
+  --color-accent-400: #f28232;
+  --color-accent-500: #e06e1d;
+  --color-accent-600: #b4560e;
 
   /* живой контраст для второстепенных акцентов (энергия, наличие) */
   --color-volt-300: #ffd166;
@@ -45,24 +47,64 @@ body {
 
 .hero-grid {
   background-image:
-    linear-gradient(rgba(240, 78, 62, 0.05) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(240, 78, 62, 0.05) 1px, transparent 1px);
+    linear-gradient(rgba(242, 130, 50, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(242, 130, 50, 0.05) 1px, transparent 1px);
   background-size: 44px 44px;
 }
 
 .hero-glow {
   background: radial-gradient(
     ellipse 60% 50% at 70% 40%,
-    rgba(240, 78, 62, 0.18),
+    rgba(242, 130, 50, 0.16),
     transparent 70%
   );
 }
 
+/* Диагональная штриховка тёмных секций (мотив SQUADRO) */
+.diag-lines {
+  background-image: repeating-linear-gradient(
+    -45deg,
+    rgba(255, 255, 255, 0.03) 0px,
+    rgba(255, 255, 255, 0.03) 1px,
+    transparent 1px,
+    transparent 16px
+  );
+}
+
+/* Мелкая капс-подпись-eyebrow */
 .label-caps {
   font-size: 0.72rem;
   font-weight: 700;
   letter-spacing: 0.22em;
   text-transform: uppercase;
+}
+
+/* Дисплейный заголовок в стиле SQUADRO: конденсированный uppercase */
+.heading-caps {
+  font-family: var(--font-display);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.015em;
+  line-height: 1.02;
+}
+
+/* Крупный номер секции («01», «02») */
+.section-num {
+  font-family: var(--font-display);
+  font-weight: 600;
+  line-height: 0.9;
+}
+
+/* «Призрачное» фоновое слово на тёмных секциях */
+.ghost-word {
+  font-family: var(--font-display);
+  font-weight: 700;
+  text-transform: uppercase;
+  line-height: 0.85;
+  color: rgba(255, 255, 255, 0.05);
+  user-select: none;
+  pointer-events: none;
+  white-space: nowrap;
 }
 
 /* Верстка HTML-контента из API (описания, блоки) */

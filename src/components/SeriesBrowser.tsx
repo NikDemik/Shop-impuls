@@ -22,7 +22,7 @@ type Props = {
   products: SeriesProduct[];
 };
 
-const CHIP = "flex items-center gap-1.5 rounded-lg border px-3 py-1.5 text-sm font-semibold transition";
+const CHIP = "flex items-center gap-1.5 border px-3 py-1.5 text-sm font-semibold transition";
 const CHIP_ON = "border-brand-950 bg-brand-950 text-accent-400";
 const CHIP_OFF = "border-line bg-white text-ink hover:border-accent-400";
 
@@ -132,11 +132,11 @@ export default function SeriesBrowser({ seriesName, seriesSlug, products }: Prop
 
   if (products.length === 0) {
     return (
-      <div className="flex h-56 flex-col items-center justify-center gap-3 rounded-2xl border border-dashed border-line bg-white text-sm text-muted">
+      <div className="flex h-56 flex-col items-center justify-center gap-3 border border-dashed border-line bg-white text-sm text-muted">
         Модели этой серии сейчас в обновлении каталога.
         <Link
           href="/contacts"
-          className="rounded-lg border border-line bg-white px-4 py-2 text-sm font-semibold text-ink transition hover:border-accent-400"
+          className="border border-line bg-white px-4 py-2 text-sm font-semibold text-ink transition hover:border-accent-400"
         >
           Запросить подбор
         </Link>
@@ -148,7 +148,7 @@ export default function SeriesBrowser({ seriesName, seriesSlug, products }: Prop
     <div>
       <section
         id="series-filter"
-        className="scroll-mt-24 rounded-2xl border border-line bg-white p-6 sm:p-8"
+        className="scroll-mt-24 border border-line bg-white p-6 sm:p-8"
       >
         <div className="flex flex-wrap items-center justify-between gap-3">
           <h2 className="text-lg font-bold">Подбор по мощности</h2>
@@ -230,7 +230,7 @@ export default function SeriesBrowser({ seriesName, seriesSlug, products }: Prop
             <select
               value={sort}
               onChange={(e) => changeSort(e.target.value)}
-              className="rounded-lg border border-line bg-paper px-2.5 py-2 text-sm outline-none focus:border-accent-400"
+              className="border border-line bg-paper px-2.5 py-2 text-sm outline-none focus:border-accent-400"
             >
               <option value="power">По мощности</option>
               <option value="price-asc">Сначала дешевле</option>
@@ -250,19 +250,19 @@ export default function SeriesBrowser({ seriesName, seriesSlug, products }: Prop
           ))}
         </div>
       ) : (
-        <div className="mt-6 flex flex-col items-center gap-3 rounded-2xl border border-dashed border-line bg-white py-14 text-center">
+        <div className="mt-6 flex flex-col items-center gap-3 border border-dashed border-line bg-white py-14 text-center">
           <span className="text-sm text-muted">Под выбранные фильтры ничего не найдено.</span>
           <button
             type="button"
             onClick={reset}
-            className="rounded-lg border border-line bg-white px-4 py-2 text-sm font-semibold text-ink transition hover:border-accent-400"
+            className="border border-line bg-white px-4 py-2 text-sm font-semibold text-ink transition hover:border-accent-400"
           >
             Сбросить фильтры
           </button>
         </div>
       )}
 
-      <section className="mt-12 rounded-2xl border border-line bg-white p-6 sm:p-8">
+      <section className="mt-12 border border-line bg-white p-6 sm:p-8">
         <h2 className="text-lg font-bold">Все модели серии {seriesName}</h2>
         <p className="mt-2 text-sm text-muted">
           Мощность, тип и цены. Нажмите на мощность, чтобы отфильтровать каталог,

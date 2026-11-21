@@ -15,7 +15,7 @@ export default function ProductGallery({
 
   return (
     <div>
-      <div className="flex h-72 items-center justify-center rounded-2xl border border-line bg-white p-6 sm:h-96">
+      <div className="flex h-72 items-center justify-center border border-line bg-white p-6 sm:h-96">
         <ProductImage
           path={images[active] ?? null}
           alt={name}
@@ -32,7 +32,7 @@ export default function ProductGallery({
               type="button"
               onClick={() => setActive(i)}
               aria-label={`Фото ${i + 1}`}
-              className={`h-16 w-20 overflow-hidden rounded-lg border-2 bg-white p-1 transition ${
+              className={`h-16 w-20 overflow-hidden border-2 bg-white p-1 transition ${
                 active === i ? "border-accent-400" : "border-line hover:border-accent-400/50"
               }`}
             >

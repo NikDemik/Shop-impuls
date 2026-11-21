@@ -36,7 +36,7 @@ export default function TextPageLayout({
 
         <div className={hasLeft && !hasToc ? "mx-auto w-full max-w-3xl min-w-0" : "min-w-0"}>
           {hasToc && (
-            <details className="mb-8 rounded-2xl border border-line bg-white p-5 xl:hidden">
+            <details className="mb-8 border border-line bg-white p-5 xl:hidden">
               <summary className="cursor-pointer text-sm font-bold">Содержание</summary>
               <div className="mt-3">
                 <TocNav items={toc} />

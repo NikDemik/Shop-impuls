@@ -84,7 +84,7 @@ export default async function SeriesPage({ params }: { params: Params }) {
               <span className="mx-1.5">/</span>
               <span className="text-accent-400">{series.name}</span>
             </div>
-            <h1 className="mt-3 text-3xl font-extrabold tracking-tight sm:text-4xl">
+            <h1 className="mt-3 heading-caps text-3xl sm:text-5xl">
               ИБП ИМПУЛЬС серия {series.name}
             </h1>
             <div className="mt-2 text-sm font-semibold text-accent-400">{series.tagline}</div>

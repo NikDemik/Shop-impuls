@@ -38,7 +38,7 @@ export default async function AdminProducts({ searchParams }: { searchParams: Se
     <div>
       <div className="flex flex-wrap items-center justify-between gap-3">
         <div>
-          <h1 className="text-2xl font-extrabold tracking-tight">Товары</h1>
+          <h1 className="text-2xl heading-caps">Товары</h1>
           <p className="mt-1 text-sm text-muted">
             {total} позиций · каталог наполняется синхронизацией с API base.sstmk.ru
           </p>
@@ -50,14 +50,14 @@ export default async function AdminProducts({ searchParams }: { searchParams: Se
           name="q"
           defaultValue={q}
           placeholder="Поиск по названию, артикулу или слагу…"
-          className="w-full max-w-md rounded-xl border border-line bg-white px-4 py-2.5 text-sm outline-none focus:border-accent-400"
+          className="w-full max-w-md border border-line bg-white px-4 py-2.5 text-sm outline-none focus:border-accent-400"
         />
-        <button type="submit" className="rounded-xl bg-brand-950 px-5 py-2.5 text-sm font-bold text-accent-400 transition hover:bg-brand-800">
+        <button type="submit" className="bg-brand-950 px-5 py-2.5 text-sm font-bold text-accent-400 transition hover:bg-brand-800">
           Найти
         </button>
       </form>
 
-      <div className="mt-5 overflow-x-auto rounded-2xl border border-line bg-white">
+      <div className="mt-5 overflow-x-auto border border-line bg-white">
         <table className="w-full min-w-220 text-sm">
           <thead>
             <tr className="border-b border-line text-left text-xs uppercase tracking-wider text-muted">
@@ -93,7 +93,7 @@ export default async function AdminProducts({ searchParams }: { searchParams: Se
                       <>
                         {formatPrice(eff)}
                         {p.priceOverrideKopecks !== null && (
-                          <span className="ml-1.5 rounded-full bg-violet-50 px-2 py-0.5 text-[10px] font-semibold text-violet-700">
+                          <span className="ml-1.5 bg-violet-50 px-2 py-0.5 text-[10px] font-semibold text-violet-700">
                             вручную
                           </span>
                         )}
@@ -107,19 +107,19 @@ export default async function AdminProducts({ searchParams }: { searchParams: Se
                       <input type="hidden" name="id" value={p.id} />
                       <button
                         type="submit"
-                        className={`inline-flex h-6 w-11 items-center rounded-full p-0.5 transition ${
+                        className={`inline-flex h-6 w-11 items-center p-0.5 transition ${
                           p.active ? "bg-accent-400" : "bg-gray-300"
                         }`}
                         title={p.active ? "Скрыть из каталога" : "Показать в каталоге"}
                       >
-                        <span className={`h-5 w-5 rounded-full bg-white shadow transition ${p.active ? "translate-x-5" : ""}`} />
+                        <span className={`h-5 w-5 bg-white shadow transition ${p.active ? "translate-x-5" : ""}`} />
                       </button>
                     </form>
                   </td>
                   <td className="px-5 py-3.5">
                     <Link
                       href={`/admin/products/${p.id}`}
-                      className="rounded-lg border border-line px-3 py-1.5 text-xs font-semibold transition hover:border-accent-400"
+                      className="border border-line px-3 py-1.5 text-xs font-semibold transition hover:border-accent-400"
                     >
                       Цена
                     </Link>
@@ -142,7 +142,7 @@ export default async function AdminProducts({ searchParams }: { searchParams: Se
             <Link
               key={i}
               href={`/admin/products?page=${i + 1}${q ? `&q=${encodeURIComponent(q)}` : ""}`}
-              className={`flex h-9 w-9 items-center justify-center rounded-lg text-sm font-semibold transition ${
+              className={`flex h-9 w-9 items-center justify-center text-sm font-semibold transition ${
                 page === i + 1 ? "bg-brand-950 text-accent-400" : "border border-line bg-white hover:border-accent-400"
               }`}
             >

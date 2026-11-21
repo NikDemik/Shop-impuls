@@ -15,7 +15,7 @@ export default function CartLinkClient() {
   return (
     <Link
       href="/cart"
-      className="relative flex items-center rounded-lg border border-white/15 px-3 py-2 text-paper/85 transition hover:border-accent-400/60 hover:text-accent-400"
+      className="relative flex items-center border border-white/15 px-3 py-2 text-paper/85 transition hover:border-accent-400/60 hover:text-accent-400"
       aria-label="Корзина"
     >
       <IconCart className="h-5 w-5" />

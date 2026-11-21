@@ -195,6 +195,24 @@ export function IconNet({ className = "h-5 w-5" }: IconProps) {
   );
 }
 
+export function IconCompare({ className = "h-5 w-5" }: IconProps) {
+  return (
+    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M12 5v15M8.5 21h7M5 6h14" />
+      <path d="M5 6 2.5 12a2.8 2.8 0 0 0 5.6 0L5 6Z" />
+      <path d="M19 6l-2.5 6a2.8 2.8 0 0 0 5.6 0L19 6Z" />
+    </svg>
+  );
+}
+
+export function IconChevronDown({ className = "h-4 w-4" }: IconProps) {
+  return (
+    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="m6 9 6 6 6-6" />
+    </svg>
+  );
+}
+
 export function IconFile({ className = "h-5 w-5" }: IconProps) {
   return (
     <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
@@ -223,11 +241,11 @@ export function IconImage({ className = "h-5 w-5" }: IconProps) {
   );
 }
 
-/** Логотип ИМПУЛЬС: тёмный квадрат с красной линией импульса */
+/** Логотип ИМПУЛЬС: оранжевая плита с тёмной линией импульса (стиль SQUADRO) */
 export function Logo({ className = "h-9 w-9" }: IconProps) {
   return (
     <svg className={className} viewBox="0 0 40 40" fill="none">
-      <rect width="40" height="40" rx="10" fill="#f04e3e" />
+      <rect width="40" height="40" rx="2" fill="#f28232" />
       <path
         d="M5 21h6l2.5-9 4 16 3.5-11 2 4H35"
         stroke="#0a0e14"

@@ -75,7 +75,7 @@ function uniqSlug(base: string, used: Set<string>, suffix: string): string {
 }
 
 const clean = (v: string | undefined): string =>
-  (v ?? "").replace(/\s+/g, " ").trim();
+  unescapeTagEntities((v ?? "").replace(/\s+/g, " ").trim());
 
 function num(v: string | undefined): number | null {
   const s = clean(v).replace(",", ".");
@@ -84,11 +84,26 @@ function num(v: string | undefined): number | null {
   return Number.isFinite(n) ? n : null;
 }
 
+/** Декодирование HTML-сущностей: API иногда отдаёт экранированный HTML (иногда в несколько слоёв) */
+function unescapeTagEntities(s: string): string {
+  let out = s;
+  for (let i = 0; i < 5; i++) {
+    if (!/&(amp;)*(lt|gt|quot|#39|apos);/.test(out)) break;
+    out = out
+      .replace(/&lt;/g, "<")
+      .replace(/&gt;/g, ">")
+      .replace(/&quot;/g, '"')
+      .replace(/&#39;|&apos;/g, "'")
+      .replace(/&amp;/g, "&"); // &amp; — последним, чтобы не декодировать дважды
+  }
+  return out;
+}
+
 /** Абсолютизация ссылок в HTML-контенте API */
 function normalizeHtml(html: string | undefined): string | null {
   const raw = html ?? "";
   if (!raw.trim()) return null;
-  let out = raw
+  let out = unescapeTagEntities(raw)
     .replace(/\r/g, "")
     .replace(/(src|href)\s*=\s*"\/(?!\/)/gi, `$1="${BASE_HOST}/`)
     .replace(/(src|href)\s*=\s*'\/(?!\/)/gi, `$1='${BASE_HOST}/`)
@@ -128,7 +143,9 @@ const EXCLUDE_FIELDS = new Set([
   ...Object.values(BLOCK_SOURCES).flat(),
   "ibp_modifications", "ibp_foto", "ibp_main_modification_id", "ibp_options_ids",
   "ibp_relevance", "ibp_seriya", "ibp_brand", "ibp_brand_rus", "ibp_model",
-  "is_ups", "btn_buy_market", "ibp_bottom_description_1", "ibp_block_shema",
+  "is_ups", "btn_buy_market", "ibp_block_shema",
+  "ibp_top_description", "ibp_top_description_1",
+  "ibp_bottom_description", "ibp_bottom_description_1",
   "ibp_block_shema_1", "ibp_documentation", "trebovanija",
   "dlya_cod", "dlya_meditsiny", "dlya_servera", "dlya_stanka", "ibp_home",
   "ibp_factory", "ibp_heating", "ibp_pump", "ibp_sansitive",

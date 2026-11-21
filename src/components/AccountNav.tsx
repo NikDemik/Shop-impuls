@@ -13,7 +13,7 @@ export default function AccountNav({ isAdmin }: { isAdmin: boolean }) {
         <Link
           key={i.href}
           href={i.href}
-          className="block rounded-xl px-4 py-2.5 text-sm font-medium text-muted transition hover:bg-white hover:text-ink"
+          className="block px-4 py-2.5 text-sm font-medium text-muted transition hover:bg-white hover:text-ink"
         >
           {i.label}
         </Link>
@@ -21,7 +21,7 @@ export default function AccountNav({ isAdmin }: { isAdmin: boolean }) {
       {isAdmin && (
         <Link
           href="/admin"
-          className="block rounded-xl px-4 py-2.5 text-sm font-bold text-accent-600 transition hover:bg-white"
+          className="block px-4 py-2.5 text-sm font-bold text-accent-600 transition hover:bg-white"
         >
           Панель управления →
         </Link>

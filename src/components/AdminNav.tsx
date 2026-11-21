@@ -15,7 +15,7 @@ export default function AdminNav() {
   const pathname = usePathname();
 
   return (
-    <aside className="flex w-full shrink-0 flex-col rounded-2xl border border-white/10 bg-brand-900/60 p-4 lg:sticky lg:top-20 lg:w-60">
+    <aside className="flex w-full shrink-0 flex-col border border-white/10 bg-brand-900/60 p-4 lg:sticky lg:top-20 lg:w-60">
       <div className="flex items-center gap-2.5 px-2 pb-3">
         <Logo className="h-8 w-8" />
         <div>
@@ -30,7 +30,7 @@ export default function AdminNav() {
             <Link
               key={i.href}
               href={i.href}
-              className={`flex items-center gap-3 rounded-xl px-4 py-2.5 text-sm font-medium transition ${
+              className={`flex items-center gap-3 px-4 py-2.5 text-sm font-medium transition ${
                 active
                   ? "bg-accent-400 text-brand-950"
                   : "text-paper/60 hover:bg-white/5 hover:text-paper"
