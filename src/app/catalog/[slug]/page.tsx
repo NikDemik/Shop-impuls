@@ -79,22 +79,24 @@ export default async function SeriesPage({ params }: { params: Params }) {
         <div className="hero-glow absolute inset-0" />
         <div className="relative mx-auto flex max-w-site flex-wrap items-center justify-between gap-8 px-4 py-14 sm:px-6 lg:px-8">
           <div className="max-w-2xl">
-            <div className="text-sm text-paper/50">
+            <div className="text-sm text-paper/50" data-reveal="up">
               <Link href="/catalog" className="transition hover:text-accent-400">Каталог</Link>
               <span className="mx-1.5">/</span>
               <span className="text-accent-400">{series.name}</span>
             </div>
-            <h1 className="mt-3 heading-caps text-3xl sm:text-5xl">
+            <h1 className="mt-3 heading-caps text-3xl sm:text-5xl" data-reveal="heading" data-reveal-delay="60">
               ИБП ИМПУЛЬС серия {series.name}
             </h1>
-            <div className="mt-2 text-sm font-semibold text-accent-400">{series.tagline}</div>
-            <p className="mt-4 text-sm leading-relaxed text-paper/65">{series.description}</p>
-            <div className="mt-5 text-sm text-paper/50">
+            <div className="mt-2 text-sm font-semibold text-accent-400" data-reveal="up" data-reveal-delay="140">{series.tagline}</div>
+            <p className="mt-4 text-sm leading-relaxed text-paper/65" data-reveal="up" data-reveal-delay="200">{series.description}</p>
+            <div className="mt-5 text-sm text-paper/50" data-reveal="up" data-reveal-delay="260">
               Диапазон мощностей: {powerText} · {products.length}{" "}
               {pluralModels(products.length)}
             </div>
           </div>
-          <UpsImage tone="dark" className="w-40 sm:w-48" />
+          <div data-reveal="img" data-reveal-delay="150">
+            <UpsImage tone="dark" className="w-40 sm:w-48" />
+          </div>
         </div>
       </section>
 

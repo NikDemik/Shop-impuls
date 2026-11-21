@@ -63,24 +63,26 @@ export default async function HomePage() {
         <div className="mx-auto max-w-site px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
           <div className="grid gap-6 lg:grid-cols-2 lg:items-end">
             <div>
-              <div className="section-num text-5xl text-accent-400">01</div>
-              <div className="label-caps mt-3 text-accent-600">Для кого</div>
-              <h2 className="heading-caps mt-3 text-3xl sm:text-5xl">
+              <div className="section-num text-5xl text-accent-400" data-reveal="up">01</div>
+              <div className="label-caps mt-3 text-accent-600" data-reveal="up" data-reveal-delay="60">Для кого</div>
+              <h2 className="heading-caps mt-3 text-3xl sm:text-5xl" data-reveal="heading" data-reveal-delay="100">
                 Решения, которые защищают вашу отрасль
               </h2>
             </div>
-            <p className="max-w-md text-sm leading-relaxed text-muted lg:justify-self-end">
+            <p className="max-w-md text-sm leading-relaxed text-muted lg:justify-self-end" data-reveal="up" data-reveal-delay="160">
               Подбираем ИБП под задачу: от роутера и газового котла до серверной
               и промышленного ЦОД. Консультация инженера на всех этапах.
             </p>
           </div>
 
           <div className="mt-10 grid gap-px overflow-hidden border border-line bg-line sm:grid-cols-2 lg:grid-cols-3">
-            {SOLUTION_CARDS.map((s) => (
+            {SOLUTION_CARDS.map((s, i) => (
               <Link
                 key={s.num}
                 href={`/solutions/${s.slug}`}
                 className="group bg-white p-7 transition hover:bg-brand-950"
+                data-reveal="up"
+                data-reveal-delay={(i % 3) * 70}
               >
                 <div className="section-num text-2xl text-accent-600 transition group-hover:text-accent-400">{s.num}</div>
                 <h3 className="mt-3 text-lg font-bold transition group-hover:text-paper">{s.title}</h3>
@@ -104,26 +106,29 @@ export default async function HomePage() {
         <div className="relative mx-auto max-w-site px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
           <div className="flex flex-wrap items-end justify-between gap-6">
             <div>
-              <div className="section-num text-5xl text-accent-400">02</div>
-              <div className="label-caps mt-3 text-accent-400">Продуктовые линейки</div>
-              <h2 className="heading-caps mt-3 text-3xl sm:text-5xl">
+              <div className="section-num text-5xl text-accent-400" data-reveal="up">02</div>
+              <div className="label-caps mt-3 text-accent-400" data-reveal="up" data-reveal-delay="60">Продуктовые линейки</div>
+              <h2 className="heading-caps mt-3 text-3xl sm:text-5xl" data-reveal="heading" data-reveal-delay="100">
                 Серии ИБП ИМПУЛЬС
               </h2>
             </div>
             <Link
               href="/catalog"
               className="flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.08em] text-accent-400 transition hover:text-accent-300"
+              data-reveal="up" data-reveal-delay="160"
             >
               Смотреть весь каталог <IconArrowRight />
             </Link>
           </div>
 
           <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-            {homeSeries.map((s) => (
+            {homeSeries.map((s, i) => (
               <Link
                 key={s.id}
                 href={`/catalog/${s.slug}`}
                 className="group flex flex-col border border-white/10 bg-brand-900/60 p-5 transition hover:border-accent-400/50 hover:bg-brand-800"
+                data-reveal="up"
+                data-reveal-delay={(i % 4) * 60}
               >
                 <div className="flex h-24 items-center justify-center">
                   <svg viewBox="0 0 40 12" className="h-10 w-32 transition group-hover:scale-105" fill="none" aria-hidden="true">
@@ -178,24 +183,26 @@ export default async function HomePage() {
         <div className="mx-auto max-w-site px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
           <div className="flex flex-wrap items-end justify-between gap-6">
             <div>
-              <div className="section-num text-5xl text-accent-400">03</div>
-              <div className="label-caps mt-3 text-accent-600">Выбор покупателей</div>
-              <h2 className="heading-caps mt-3 text-3xl sm:text-5xl">
+              <div className="section-num text-5xl text-accent-400" data-reveal="up">03</div>
+              <div className="label-caps mt-3 text-accent-600" data-reveal="up" data-reveal-delay="60">Выбор покупателей</div>
+              <h2 className="heading-caps mt-3 text-3xl sm:text-5xl" data-reveal="heading" data-reveal-delay="100">
                 Популярные модели
               </h2>
             </div>
             <Link
               href="/catalog"
               className="flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.08em] text-accent-600 transition hover:text-accent-500"
+              data-reveal="up" data-reveal-delay="160"
             >
               Все товары <IconArrowRight />
             </Link>
           </div>
 
           <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-            {popular.map((p) => (
+            {popular.map((p, i) => (
               <ProductCard
                 key={p.id}
+                revealDelay={(i % 4) * 60}
                 p={{
                   slug: p.slug,
                   article: p.article,
@@ -217,8 +224,8 @@ export default async function HomePage() {
       {/* ─── СТАТИСТИКА ─── */}
       <section className="border-y border-line bg-white">
         <div className="mx-auto grid max-w-site gap-8 px-4 py-12 sm:grid-cols-2 sm:px-6 lg:grid-cols-4 lg:px-8">
-          {STATS.map((s) => (
-            <div key={s.label} className="flex items-center gap-4">
+          {STATS.map((s, i) => (
+            <div key={s.label} className="flex items-center gap-4" data-reveal="up" data-reveal-delay={i * 60}>
               <div className="flex h-12 w-12 items-center justify-center bg-brand-950 text-accent-400">
                 <s.icon className="h-6 w-6" />
               </div>
@@ -237,14 +244,14 @@ export default async function HomePage() {
           <div className="overflow-hidden bg-brand-950 text-paper">
             <div className="hero-grid diag-lines grid gap-10 p-8 sm:p-12 lg:grid-cols-2 lg:items-center lg:p-16">
               <div>
-                <div className="section-num text-5xl text-accent-400">04</div>
-                <div className="label-caps mt-3 text-accent-400">Оптовым покупателям</div>
-                <h2 className="heading-caps mt-3 text-3xl sm:text-5xl">
+                <div className="section-num text-5xl text-accent-400" data-reveal="up">04</div>
+                <div className="label-caps mt-3 text-accent-400" data-reveal="up" data-reveal-delay="60">Оптовым покупателям</div>
+                <h2 className="heading-caps mt-3 text-3xl sm:text-5xl" data-reveal="heading" data-reveal-delay="100">
                   Работаем по договору, отгружаем со склада
                 </h2>
-                <p className="mt-4 max-w-lg text-sm leading-relaxed text-paper/65">
+                <p className="mt-4 max-w-lg text-sm leading-relaxed text-paper/65" data-reveal="up" data-reveal-delay="160">
                   Регистрация для юридических лиц открывает безналичную оплату по счёту,
-                  скидку 5% на заказы и персонального менеджера. Отгрузка в день оплаты
+                  скидка 5% на заказы и персональный менеджер. Отгрузка в день оплаты
                   или доставка транспортной компанией.
                 </p>
                 <ul className="mt-6 space-y-2.5 text-sm text-paper/75">
@@ -276,7 +283,7 @@ export default async function HomePage() {
                 </div>
               </div>
 
-              <div id="contacts" className="border border-white/10 bg-brand-900/70 p-6 sm:p-8">
+              <div id="contacts" className="border border-white/10 bg-brand-900/70 p-6 sm:p-8" data-reveal="img" data-reveal-delay="200">
                 <div className="label-caps text-accent-400">Свяжитесь с нами</div>
                 <div className="mt-5 space-y-5">
                   <div>

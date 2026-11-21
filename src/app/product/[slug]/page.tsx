@@ -192,7 +192,7 @@ export default async function ProductPage({ params }: { params: Params }) {
           })),
         }}
       />
-      <div className="text-sm text-muted">
+      <div className="text-sm text-muted" data-reveal="up">
         <Link href="/" className="transition hover:text-accent-600">Главная</Link>
         <span className="mx-1.5">/</span>
         <Link href="/catalog" className="transition hover:text-accent-600">Каталог</Link>
@@ -209,10 +209,12 @@ export default async function ProductPage({ params }: { params: Params }) {
       </div>
 
       <div className="mt-6 grid gap-10 lg:grid-cols-2">
-        <ProductGallery images={galleryImages} name={product.name} />
+        <div data-reveal="img">
+          <ProductGallery images={galleryImages} name={product.name} />
+        </div>
 
         <div>
-          <div className="flex flex-wrap items-center gap-3">
+          <div className="flex flex-wrap items-center gap-3" data-reveal="up">
             {product.series && (
               <Link
                 href={`/catalog/${product.series.slug}`}
@@ -233,8 +235,8 @@ export default async function ProductPage({ params }: { params: Params }) {
             )}
           </div>
 
-          <h1 className="mt-3 heading-caps text-3xl sm:text-5xl">{product.name}</h1>
-          <div className="mt-2 flex flex-wrap gap-x-4 gap-y-1 text-sm text-muted">
+          <h1 className="mt-3 heading-caps text-3xl sm:text-5xl" data-reveal="heading" data-reveal-delay="60">{product.name}</h1>
+          <div className="mt-2 flex flex-wrap gap-x-4 gap-y-1 text-sm text-muted" data-reveal="up" data-reveal-delay="140">
             {product.article && <span>Артикул: {product.article}</span>}
             {product.powerKva !== null && <span>Мощность: {formatKva(product.powerKva)}</span>}
             {product.deliveryDays !== null && <span>Срок поставки: {product.deliveryDays} дн.</span>}
@@ -255,7 +257,7 @@ export default async function ProductPage({ params }: { params: Params }) {
             </div>
           )}
 
-          <div className="mt-6 border border-line bg-white p-6">
+          <div className="mt-6 border border-line bg-white p-6" data-reveal="up" data-reveal-delay="200">
             {hasPrice ? (
               <div className="flex flex-wrap items-end justify-between gap-4">
                 <div>
@@ -333,7 +335,7 @@ export default async function ProductPage({ params }: { params: Params }) {
       {/* ─── Характеристики + описание ─── */}
       <div className="mt-10 grid gap-6 lg:grid-cols-[1fr_1.2fr]">
         {Object.keys(specs).length > 0 && (
-          <div className="border border-line bg-white p-6">
+          <div className="border border-line bg-white p-6" data-reveal="up">
             <h2 className="heading-caps text-lg">Характеристики</h2>
             <table className="mt-4 w-full text-sm">
               <tbody>
@@ -350,7 +352,7 @@ export default async function ProductPage({ params }: { params: Params }) {
 
         <div className="space-y-6">
           {(product.description || blocks.advantages) && (
-            <div className="border border-line bg-white p-6">
+            <div className="border border-line bg-white p-6" data-reveal="up" data-reveal-delay="80">
               <h2 className="heading-caps text-lg">Описание</h2>
               {product.description && (
                 <div
@@ -376,7 +378,7 @@ export default async function ProductPage({ params }: { params: Params }) {
           )}
 
           {files.length > 0 && (
-            <div className="border border-line bg-white p-6">
+            <div className="border border-line bg-white p-6" data-reveal="up">
               <h2 className="heading-caps text-lg">Документация</h2>
               <div className="mt-4 space-y-4">
                 {[...fileGroups.entries()].map(([cat, groupFiles]) => (
@@ -415,6 +417,7 @@ export default async function ProductPage({ params }: { params: Params }) {
           <section
             key={key}
             className={`mt-10 border border-line bg-white p-6 sm:p-8 ${i % 2 === 1 ? "bg-paper" : ""}`}
+            data-reveal="up"
           >
             <div
               className="rich-html"
@@ -425,7 +428,7 @@ export default async function ProductPage({ params }: { params: Params }) {
 
       {/* ─── Модификации ─── */}
       {modifications && modifications.rows.length > 0 && (
-        <section className="mt-10 border border-line bg-white p-6 sm:p-8">
+        <section className="mt-10 border border-line bg-white p-6 sm:p-8" data-reveal="up">
           <h2 className="heading-caps text-lg">Модификации</h2>
           <p className="mt-2 text-sm text-muted">
             Модели различаются индикацией, интерфейсами связи и типом выходных разъёмов.
@@ -467,7 +470,7 @@ export default async function ProductPage({ params }: { params: Params }) {
       )}
 
       {/* ─── FAQ ─── */}
-      <section className="mt-10 border border-line bg-white p-6 sm:p-8">
+      <section className="mt-10 border border-line bg-white p-6 sm:p-8" data-reveal="up">
         <h2 className="heading-caps text-lg">Частые вопросы</h2>
         <div className="mt-4 space-y-4">
           {faq.map((f) => (
@@ -481,11 +484,12 @@ export default async function ProductPage({ params }: { params: Params }) {
 
       {similar.length > 0 && (
         <section className="mt-14">
-          <h2 className="text-2xl heading-caps">Похожие товары</h2>
+          <h2 className="text-2xl heading-caps" data-reveal="heading">Похожие товары</h2>
           <div className="mt-6 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-            {similar.map((p) => (
+            {similar.map((p, i) => (
               <ProductCard
                 key={p.id}
+                revealDelay={(i % 4) * 60}
                 p={{
                   slug: p.slug,
                   article: p.article,

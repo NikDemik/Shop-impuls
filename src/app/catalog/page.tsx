@@ -123,8 +123,8 @@ export default async function CatalogPage({ searchParams }: { searchParams: Sear
 
       <div className="mt-3 flex flex-wrap items-end justify-between gap-4">
         <div>
-          <h1 className="heading-caps text-3xl sm:text-5xl">Каталог ИБП ИМПУЛЬС</h1>
-          <p className="mt-2 text-sm text-muted">Найдено {total} моделей · цены в рублях</p>
+          <h1 className="heading-caps text-3xl sm:text-5xl" data-reveal="heading">Каталог ИБП ИМПУЛЬС</h1>
+          <p className="mt-2 text-sm text-muted" data-reveal="up" data-reveal-delay="80">Найдено {total} моделей · цены в рублях</p>
         </div>
         <SortSelect current={sort} qs={qs} />
       </div>
@@ -143,9 +143,10 @@ export default async function CatalogPage({ searchParams }: { searchParams: Sear
             </div>
           ) : (
             <div className="grid gap-5 sm:grid-cols-2 xl:grid-cols-3">
-              {products.map((p) => (
+              {products.map((p, i) => (
                 <ProductCard
                   key={p.id}
+                  revealDelay={(i % 3) * 60}
                   p={{
                     slug: p.slug,
                     article: p.article,

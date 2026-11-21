@@ -97,12 +97,12 @@ export default async function SolutionPage({ params }: { params: Params }) {
           <span className="text-ink">{solution.title}</span>
         </div>
 
-        <h1 className="mt-3 heading-caps text-3xl sm:text-5xl">
+        <h1 className="mt-3 heading-caps text-3xl sm:text-5xl" data-reveal="heading">
           ИБП ИМПУЛЬС — {solution.title.toLowerCase()}
         </h1>
-        <p className="mt-5 text-base leading-relaxed text-muted">{solution.lead}</p>
+        <p className="mt-5 text-base leading-relaxed text-muted" data-reveal="up" data-reveal-delay="80">{solution.lead}</p>
 
-        <div id="overview" className="mt-6 space-y-4 text-sm leading-relaxed text-muted">
+        <div id="overview" className="mt-6 space-y-4 text-sm leading-relaxed text-muted" data-reveal="up" data-reveal-delay="140">
           {solution.body.map((p, i) => (
             <div key={i}>
               <h2 className="text-lg heading-caps text-ink">{p.h2}</h2>
@@ -113,7 +113,7 @@ export default async function SolutionPage({ params }: { params: Params }) {
           ))}
         </div>
 
-        <section id="models" className="mt-10 scroll-mt-24">
+        <section id="models" className="mt-10 scroll-mt-24" data-reveal="up">
           <div className="flex flex-wrap items-center justify-between gap-3">
             <h2 className="text-xl heading-caps">Подходящие модели</h2>
             <Link
@@ -125,9 +125,10 @@ export default async function SolutionPage({ params }: { params: Params }) {
           </div>
           {products.length > 0 ? (
             <div className="mt-5 grid gap-5 sm:grid-cols-2">
-              {products.map((p) => (
+              {products.map((p, i) => (
                 <ProductCard
                   key={p.id}
+                  revealDelay={(i % 2) * 70}
                   p={{
                     slug: p.slug,
                     article: p.article,
@@ -150,7 +151,7 @@ export default async function SolutionPage({ params }: { params: Params }) {
           )}
         </section>
 
-        <section id="faq" className="mt-10 scroll-mt-24">
+        <section id="faq" className="mt-10 scroll-mt-24" data-reveal="up">
           <h2 className="text-xl heading-caps">Частые вопросы</h2>
           <div className="mt-5 space-y-4">
             {solution.faq.map((f, i) => (

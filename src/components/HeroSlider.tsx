@@ -110,19 +110,19 @@ function SlideBrand({ active }: { active: boolean }) {
       }`}
     >
       <div>
-        <div className="section-num text-6xl text-accent-400 sm:text-7xl">01</div>
-        <div className="label-caps mt-4 text-accent-400">
+        <div className="section-num text-6xl text-accent-400 sm:text-7xl" data-reveal="up">01</div>
+        <div className="label-caps mt-4 text-accent-400" data-reveal="up" data-reveal-delay="60">
           Источники бесперебойного питания ИМПУЛЬС
         </div>
-        <h1 className="heading-caps mt-5 text-4xl sm:text-6xl lg:text-[4.2rem]">
+        <h1 className="heading-caps mt-5 text-4xl sm:text-6xl lg:text-[4.2rem]" data-reveal="heading" data-reveal-delay="100">
           Бесперебойное питание для дома, бизнеса и промышленности
         </h1>
-        <p className="mt-6 max-w-lg text-base leading-relaxed text-paper/65">
+        <p className="mt-6 max-w-lg text-base leading-relaxed text-paper/65" data-reveal="up" data-reveal-delay="180">
           Полная линейка ИБП ИМПУЛЬС — от 0,45 кВА до 2 МВА: компьютеры и котлы,
           серверные и ЦОД, медицина и производство. Официальный магазин бренда,
           доставка по всей России.
         </p>
-        <div className="mt-8 flex flex-wrap gap-3">
+        <div className="mt-8 flex flex-wrap gap-3" data-reveal="up" data-reveal-delay="240">
           <Link
             href="/catalog"
             className="flex items-center gap-2 bg-accent-400 px-7 py-3.5 text-sm font-bold uppercase tracking-[0.08em] text-brand-950 transition hover:bg-accent-300"
@@ -137,7 +137,7 @@ function SlideBrand({ active }: { active: boolean }) {
           </Link>
         </div>
 
-        <div className="mt-10 grid max-w-xl grid-cols-2 gap-6 border-t border-white/15 pt-8 sm:grid-cols-3">
+        <div className="mt-10 grid max-w-xl grid-cols-2 gap-6 border-t border-white/15 pt-8 sm:grid-cols-3" data-reveal="up" data-reveal-delay="300">
           <div>
             <div className="section-num text-4xl text-accent-400">30</div>
             <div className="mt-1 text-xs leading-snug text-paper/55">
@@ -159,7 +159,7 @@ function SlideBrand({ active }: { active: boolean }) {
         </div>
       </div>
 
-      <div className="relative flex justify-center lg:justify-end">
+      <div className="relative flex justify-center lg:justify-end" data-reveal="img" data-reveal-delay="200">
         <div className="absolute right-4 top-6 hidden text-right text-[10px] font-semibold uppercase leading-relaxed tracking-[0.18em] text-paper/35 lg:block">
           Защита
           <br />

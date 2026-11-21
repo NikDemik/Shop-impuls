@@ -17,12 +17,23 @@ export type ProductCardData = {
   seriesSlug: string | null;
 };
 
-export default function ProductCard({ p }: { p: ProductCardData }) {
+export default function ProductCard({
+  p,
+  revealDelay,
+}: {
+  p: ProductCardData;
+  /** Ступенчатая задержка появления при скролле, мс (для сеток) */
+  revealDelay?: number;
+}) {
   const hasPrice = p.priceKopecks !== null;
   const saleMode = hasPrice && p.saleKopecks !== null;
 
   return (
-    <div className="group flex flex-col border border-line bg-white p-5 transition hover:border-accent-400/60 hover:shadow-[0_8px_30px_rgba(180,86,14,0.1)]">
+    <div
+      className="group flex flex-col border border-line bg-white p-5 transition hover:border-accent-400/60 hover:shadow-[0_8px_30px_rgba(180,86,14,0.1)]"
+      data-reveal="up"
+      data-reveal-delay={revealDelay}
+    >
       <div className="flex items-center justify-between gap-2">
         {p.seriesName && p.seriesSlug ? (
           <Link

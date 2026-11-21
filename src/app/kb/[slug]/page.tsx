@@ -56,12 +56,12 @@ export default async function KbArticlePage({ params }: { params: Params }) {
         <span className="text-ink">{article.title}</span>
       </div>
 
-      <h1 className="mt-3 heading-caps text-3xl sm:text-5xl">{article.title}</h1>
-      <p className="mt-5 text-base leading-relaxed text-muted">{article.lead}</p>
+      <h1 className="mt-3 heading-caps text-3xl sm:text-5xl" data-reveal="heading">{article.title}</h1>
+      <p className="mt-5 text-base leading-relaxed text-muted" data-reveal="up" data-reveal-delay="80">{article.lead}</p>
 
       <article className="mt-8 space-y-8">
         {article.sections.map((s, i) => (
-          <section key={s.h2} id={`s${i + 1}`} className="scroll-mt-24">
+          <section key={s.h2} id={`s${i + 1}`} className="scroll-mt-24" data-reveal="up">
             <h2 className="text-xl heading-caps">{s.h2}</h2>
             <div className="mt-3 space-y-3 text-sm leading-relaxed text-muted">
               {s.paragraphs.map((p, j) => (
@@ -72,7 +72,7 @@ export default async function KbArticlePage({ params }: { params: Params }) {
         ))}
       </article>
 
-      <div className="mt-10 bg-brand-950 p-6 text-paper sm:p-8">
+      <div className="mt-10 bg-brand-950 p-6 text-paper sm:p-8" data-reveal="up">
         <h2 className="text-lg font-extrabold">Подберём ИБП под вашу задачу</h2>
         <p className="mt-2 text-sm text-paper/70">
           Опишите нагрузку и требуемое время автономии — инженер предложит модель

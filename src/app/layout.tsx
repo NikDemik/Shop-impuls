@@ -3,6 +3,7 @@ import { Manrope, Oswald } from "next/font/google";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import CompareBar from "@/components/CompareBar";
+import RevealProvider from "@/components/RevealProvider";
 import JsonLd from "@/components/JsonLd";
 import { organizationLd, SITE_URL, SITE_TITLE } from "@/lib/seo";
 import "./globals.css";
@@ -45,13 +46,17 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="ru" className={`${manrope.variable} ${oswald.variable}`}>
+    /* suppressHydrationWarning: инлайновый скрипт добавляет класс js на <html> до гидратации */
+    <html lang="ru" className={`${manrope.variable} ${oswald.variable}`} suppressHydrationWarning>
       <body className="flex min-h-screen flex-col">
+        {/* Класс js включает scroll-reveal скрытие (см. globals.css): без JS контент виден полностью */}
+        <script dangerouslySetInnerHTML={{ __html: "document.documentElement.classList.add('js');" }} />
         <JsonLd data={organizationLd()} />
         <Header />
         <main className="flex-1">{children}</main>
         <CompareBar />
         <Footer />
+        <RevealProvider />
       </body>
     </html>
   );

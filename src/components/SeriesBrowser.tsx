@@ -242,9 +242,10 @@ export default function SeriesBrowser({ seriesName, seriesSlug, products }: Prop
 
       {filtered.length > 0 ? (
         <div className="mt-6 grid gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-          {filtered.map((p) => (
+          {filtered.map((p, i) => (
             <ProductCard
               key={p.slug}
+              revealDelay={(i % 4) * 60}
               p={{ ...p, image: null, seriesName: seriesShort, seriesSlug }}
             />
           ))}
@@ -262,7 +263,7 @@ export default function SeriesBrowser({ seriesName, seriesSlug, products }: Prop
         </div>
       )}
 
-      <section className="mt-12 border border-line bg-white p-6 sm:p-8">
+      <section className="mt-12 border border-line bg-white p-6 sm:p-8" data-reveal="up">
         <h2 className="text-lg font-bold">Все модели серии {seriesName}</h2>
         <p className="mt-2 text-sm text-muted">
           Мощность, тип и цены. Нажмите на мощность, чтобы отфильтровать каталог,

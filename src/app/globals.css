@@ -199,3 +199,69 @@ input[type="number"] {
   -moz-appearance: textfield;
   appearance: textfield;
 }
+
+/* ─── Scroll-reveal (подключение: RevealProvider) ───
+   Скрытие работает только при классе .js на <html> (его ставит инлайновый
+   скрипт до первой отрисовки), поэтому без JS и для роботов контент виден
+   полностью. Варианты: up — текст/карточки, heading — заголовки (wipe),
+   img — изображения. Задержка — data-reveal-delay="N" (мс). */
+.js [data-reveal] {
+  opacity: 0;
+  transition:
+    opacity 0.5s ease-out,
+    transform 0.5s ease-out,
+    clip-path 0.6s ease-out;
+  transition-delay: var(--reveal-delay, 0ms);
+}
+.js [data-reveal="up"] {
+  transform: translateY(16px);
+}
+.js [data-reveal="img"] {
+  transform: scale(0.97);
+}
+.js [data-reveal="heading"] {
+  transform: translateY(10px);
+  /* не клипаем до нуля полностью: у IntersectionObserver в Chromium элемент
+     с нулевой видимой площадью не считается пересекающимся и не раскрывается */
+  clip-path: inset(0 calc(100% - 2px) 0 0);
+}
+.js [data-reveal].is-visible {
+  opacity: 1;
+  transform: none;
+}
+/* clip-path после раскрытия оставляем только заголовкам: он создаёт containing
+   block и обрезает fixed-потомков (модальные окна) — у up/img его быть не должно */
+.js [data-reveal="heading"].is-visible {
+  clip-path: inset(0 0 0 0);
+}
+@media (prefers-reduced-motion: reduce) {
+  .js [data-reveal],
+  .js [data-reveal].is-visible {
+    opacity: 1;
+    transform: none;
+    clip-path: none;
+    transition: none;
+  }
+}
+
+/* ─── Лайтбокс фото товара ─── */
+@keyframes lightbox-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes lightbox-img-in {
+  from { opacity: 0; transform: scale(0.96); }
+  to { opacity: 1; transform: none; }
+}
+.lightbox-overlay {
+  animation: lightbox-in 0.2s ease-out;
+}
+.lightbox-img {
+  animation: lightbox-img-in 0.25s ease-out;
+}
+@media (prefers-reduced-motion: reduce) {
+  .lightbox-overlay,
+  .lightbox-img {
+    animation: none;
+  }
+}
