@@ -1,0 +1,20 @@
+services:
+  db:
+    image: postgres:16-alpine
+    container_name: impuls-shop-db
+    environment:
+      POSTGRES_USER: impuls
+      POSTGRES_PASSWORD: impuls_secret
+      POSTGRES_DB: impuls_shop
+    ports:
+      - "5434:5432"
+    volumes:
+      - impuls_pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U impuls -d impuls_shop"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+volumes:
+  impuls_pgdata:
