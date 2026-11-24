@@ -1,7 +1,7 @@
 import Link from "next/link";
 import type { Metadata } from "next";
 import { prisma } from "@/lib/prisma";
-import HeroSlider from "@/components/HeroSlider";
+import HeroSlider, { type HeroProduct } from "@/components/HeroSlider";
 import ProductCard from "@/components/ProductCard";
 import {
   IconArrowRight,
@@ -33,6 +33,9 @@ const SOLUTION_CARDS = SOLUTIONS.map((s, i) => ({
   desc: s.lead.split(":")[0].split(".")[0] + ".",
 }));
 
+/** Товары для слайда 03 hero-слайдера: rack / tower / компакт, в этом порядке */
+const HERO_PRODUCT_SLUGS = ["slim-500", "master-600", "yunior-600-0-6-kva"];
+
 export default async function HomePage() {
   const seriesList = await prisma.series.findMany({
     orderBy: { sortOrder: "asc" },
@@ -42,6 +45,15 @@ export default async function HomePage() {
   const withGoods = seriesList.filter((s) => s._count.products > 0);
   const homeSeries = [...withGoods].slice(0, 8);
   const hasMoreSeries = withGoods.length > homeSeries.length;
+
+  const heroFound = await prisma.product.findMany({
+    where: { active: true, slug: { in: HERO_PRODUCT_SLUGS } },
+    select: { slug: true, name: true, powerKva: true, image: true, priceKopecks: true },
+  });
+  // Порядок фиксированный (СЛИМ → МАСТЕР → ЮНИОР); товар без фото не показываем
+  const heroProducts: HeroProduct[] = HERO_PRODUCT_SLUGS.map((slug) =>
+    heroFound.find((p) => p.slug === slug && p.image !== null)
+  ).filter((p): p is HeroProduct => p !== undefined);
 
   const popular = await prisma.product.findMany({
     where: {
@@ -55,8 +67,8 @@ export default async function HomePage() {
 
   return (
     <div>
-      {/* ─── HERO: слайдер из 2 баннеров ─── */}
-      <HeroSlider />
+      {/* ─── HERO: слайдер из 3 баннеров ─── */}
+      <HeroSlider products={heroProducts} />
 
       {/* ─── РЕШЕНИЯ ─── */}
       <section id="solutions" className="bg-paper">

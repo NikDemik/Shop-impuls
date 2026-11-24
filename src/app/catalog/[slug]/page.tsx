@@ -113,6 +113,7 @@ export default async function SeriesPage({ params }: { params: Params }) {
               type: p.type,
               priceKopecks: effectivePriceKopecks(p),
               saleKopecks: p.priceOverrideKopecks === null ? p.saleKopecks : null,
+              image: p.image,
             }))}
           />
         </Suspense>

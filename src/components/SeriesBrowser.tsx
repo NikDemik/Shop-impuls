@@ -14,6 +14,7 @@ export type SeriesProduct = {
   type: string | null;
   priceKopecks: number | null;
   saleKopecks: number | null;
+  image: string | null;
 };
 
 type Props = {
@@ -246,7 +247,7 @@ export default function SeriesBrowser({ seriesName, seriesSlug, products }: Prop
             <ProductCard
               key={p.slug}
               revealDelay={(i % 4) * 60}
-              p={{ ...p, image: null, seriesName: seriesShort, seriesSlug }}
+              p={{ ...p, seriesName: seriesShort, seriesSlug }}
             />
           ))}
         </div>

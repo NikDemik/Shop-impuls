@@ -265,3 +265,18 @@ input[type="number"] {
     animation: none;
   }
 }
+
+/* ─── Hero-слайд 03: парящие товары ─── */
+@keyframes hero-float {
+  from { transform: translateY(0); }
+  to { transform: translateY(-10px); }
+}
+.hero-float {
+  animation: hero-float 3.2s ease-in-out infinite alternate;
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-float {
+    animation: none;
+  }
+}
+
